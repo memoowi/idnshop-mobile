@@ -17,7 +17,6 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
   int _backPressCount = 0;
   bool _canPop = false;
   Timer? _exitTimer;
-  int _currentIndex = 0;
 
   void _startExitTimer() {
     _exitTimer?.cancel(); // Cancel any existing timer
@@ -30,11 +29,6 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
   }
 
   final carouselController = CarouselController();
-  void _onItemChanged(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
 
   List<Map<String, dynamic>> onBoardingData = [
     {
@@ -67,15 +61,17 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingBloc, OnboardingState>(
       builder: (context, state) {
+        int currentIndex = 0;
+        if (state is OnboardingPageChanged) {
+          currentIndex = state.currentIndex;
+        }
         return PopScope(
           canPop: _canPop,
           onPopInvoked: (didPop) {
             if (!didPop) {
-              if (_currentIndex != 0) {
+              if (currentIndex != 0) {
+                context.read<OnboardingBloc>().add(PreviousPageEvent());
                 carouselController.previousPage();
-                setState(() {
-                  _currentIndex = _currentIndex - 1;
-                });
                 return;
               }
               if (_backPressCount == 0) {
@@ -102,13 +98,15 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                 CarouselSlider(
                   carouselController: carouselController,
                   options: CarouselOptions(
-                    initialPage: _currentIndex,
+                    initialPage: currentIndex,
                     viewportFraction: 1.0,
                     height: MediaQuery.of(context).size.height * 0.6,
                     scrollDirection: Axis.horizontal,
                     enableInfiniteScroll: false,
                     onPageChanged: (index, reason) {
-                      _onItemChanged(index);
+                      context
+                          .read<OnboardingBloc>()
+                          .add(UpdatePageEvent(index));
                     },
                   ),
                   items: onBoardingData.map((item) {
@@ -130,13 +128,13 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                     child: Column(
                       children: [
                         Text(
-                          onBoardingData[_currentIndex]['title'],
+                          onBoardingData[currentIndex]['title'],
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         const SizedBox(height: 16.0),
                         Text(
-                          onBoardingData[_currentIndex]['description'],
+                          onBoardingData[currentIndex]['description'],
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
@@ -154,7 +152,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                                         horizontal: 5.0),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: _currentIndex == i
+                                      color: currentIndex == i
                                           ? CustomColor.secondary1
                                           : Colors.grey,
                                     ),
@@ -163,8 +161,10 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                             ),
                             FilledButton(
                               onPressed: () {
-                                if (_currentIndex < onBoardingData.length - 1) {
-                                  _onItemChanged(_currentIndex + 1);
+                                if (currentIndex < onBoardingData.length - 1) {
+                                  context
+                                      .read<OnboardingBloc>()
+                                      .add(NextPageEvent());
                                   carouselController.nextPage();
                                 }
                               },

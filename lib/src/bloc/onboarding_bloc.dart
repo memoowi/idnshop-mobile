@@ -16,18 +16,31 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     });
 
     on<CheckEvent>((event, emit) async {
-      log('Checking onboarding');
       final prefs = await SharedPreferences.getInstance();
       final isOnboarded = prefs.getBool('isOnboarded') ?? false;
       if (isOnboarded) {
-        log('Onboarding done');
-        print(isOnboarded);
         emit(OnboardingDone());
       }
 
-      log('Onboarding not done');
       emit(OnboardingInitial());
-      log('state is ${state.runtimeType}');
+    });
+
+    on<NextPageEvent>((event, emit) {
+      if (state is OnboardingPageChanged) {
+        int currentIndex = (state as OnboardingPageChanged).currentIndex;
+        emit(OnboardingPageChanged(currentIndex + 1));
+      }
+    });
+
+    on<PreviousPageEvent>((event, emit) {
+      if (state is OnboardingPageChanged) {
+        int currentIndex = (state as OnboardingPageChanged).currentIndex;
+        emit(OnboardingPageChanged(currentIndex - 1));
+      }
+    });
+
+    on<UpdatePageEvent>((event, emit) {
+      emit(OnboardingPageChanged(event.newIndex));
     });
   }
 }

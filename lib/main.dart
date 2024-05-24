@@ -1,11 +1,26 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:idnshop/src/bloc/onboarding_bloc.dart';
 import 'package:idnshop/src/routes/app_routes.dart';
-import 'package:idnshop/src/screens/auth/login_screen.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
+import 'package:idnshop/src/theme/custom_filled_button_theme.dart';
+import 'package:idnshop/src/theme/custom_text_button_theme.dart';
+import 'package:idnshop/src/theme/custom_text_theme.dart';
 import 'package:idnshop/src/utils/config.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<OnboardingBloc>(
+          create: (context) => OnboardingBloc()..add(CheckEvent()),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,15 +33,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: CustomColor.primary),
         scaffoldBackgroundColor: Colors.white,
-        fontFamily: 'Nunito',
-        textTheme: const TextTheme(
-          headlineLarge: TextStyle(color: CustomColor.secondary1),
-          headlineMedium: TextStyle(color: CustomColor.secondary1),
-          headlineSmall: TextStyle(color: CustomColor.secondary1),
-          bodyLarge: TextStyle(color: CustomColor.secondary1),
-          bodyMedium: TextStyle(color: CustomColor.secondary1),
-          bodySmall: TextStyle(color: CustomColor.secondary1),
-        ),
+        fontFamily: CustomTextTheme.baseFontFamily,
+        textTheme: CustomTextTheme.customTextTheme,
+        textButtonTheme: CustomTextButtonTheme.customTextButtonTheme,
+        filledButtonTheme: CustomFilledButtonTheme.customFilledButtonTheme,
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: Config.debug,

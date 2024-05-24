@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idnshop/src/bloc/onboarding_bloc.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
+import 'package:idnshop/src/utils/on_boarding_data.dart';
 
 class OnBoarding1Screen extends StatefulWidget {
   const OnBoarding1Screen({super.key});
@@ -14,6 +15,7 @@ class OnBoarding1Screen extends StatefulWidget {
 }
 
 class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
+  final data = OnBoardingData.data;
   int _backPressCount = 0;
   bool _canPop = false;
   Timer? _exitTimer;
@@ -29,27 +31,6 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
   }
 
   final carouselController = CarouselController();
-
-  List<Map<String, dynamic>> onBoardingData = [
-    {
-      "image": "assets/images/chara-1.png",
-      "title": "Shop Now",
-      "description":
-          "Discover the latest fashion trends and find the perfect pair for your style.",
-    },
-    {
-      "image": "assets/images/chara-2.png",
-      "title": "Fast Delivery",
-      "description":
-          "Get your favorite items at your doorsteps with our fast and reliable delivery service.",
-    },
-    {
-      "image": "assets/images/chara-3.png",
-      "title": "Easy Returns",
-      "description":
-          "Return your items in as little as 30 days with our hassle-free returns policy.",
-    },
-  ];
 
   @override
   void dispose() {
@@ -109,7 +90,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                           .add(UpdatePageEvent(index));
                     },
                   ),
-                  items: onBoardingData.map((item) {
+                  items: data.map((item) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Image.asset(
@@ -128,13 +109,13 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                     child: Column(
                       children: [
                         Text(
-                          onBoardingData[currentIndex]['title'],
+                          data[currentIndex]['title'],
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         const SizedBox(height: 16.0),
                         Text(
-                          onBoardingData[currentIndex]['description'],
+                          data[currentIndex]['description'],
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
@@ -144,7 +125,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                           children: [
                             Row(
                               children: [
-                                for (int i = 0; i < onBoardingData.length; i++)
+                                for (int i = 0; i < data.length; i++)
                                   Container(
                                     width: 8.0,
                                     height: 8.0,
@@ -161,14 +142,18 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                             ),
                             FilledButton(
                               onPressed: () {
-                                if (currentIndex < onBoardingData.length - 1) {
+                                if (currentIndex < data.length - 1) {
                                   context
                                       .read<OnboardingBloc>()
                                       .add(NextPageEvent());
                                   carouselController.nextPage();
                                 }
                               },
-                              child: Text('Next'),
+                              child: Text(
+                                currentIndex == data.length - 1
+                                    ? 'Get Started'
+                                    : 'Next',
+                              ),
                             ),
                           ],
                         )

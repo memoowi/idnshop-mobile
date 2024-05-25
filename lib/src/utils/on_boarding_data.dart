@@ -2,21 +2,21 @@ class OnBoardingData {
   static List<Map<String, dynamic>> get data => [
         {
           "image": "assets/images/chara-1.png",
-          "title": "Shop Now",
+          "title": "Welcome to IDNShop",
           "description":
-              "Discover the latest fashion trends and find the perfect pair for your style.",
+              "Designed with care, enjoyed with confidence. Affordable prices for everyday needs.",
         },
         {
           "image": "assets/images/chara-2.png",
-          "title": "Fast Delivery",
+          "title": "Explore a Diverse Range of Products",
           "description":
-              "Get your favorite items at your doorsteps with our fast and reliable delivery service.",
+              "Discover high-quality IDN merchandise across diverse categories. Find something unique for every occasion and express your personal style.",
         },
         {
           "image": "assets/images/chara-3.png",
-          "title": "Easy Returns",
+          "title": "Pure Choices, Pure Delight",
           "description":
-              "Return your items in as little as 30 days with our hassle-free returns policy.",
+              "Experience the joy of Halal Living. Shop confidently with our ethically sourced and produced products.",
         },
       ];
 }

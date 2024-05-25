@@ -3,7 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:idnshop/src/bloc/onboarding_bloc.dart';
+import 'package:idnshop/src/bloc/onboarding/onboarding_bloc.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/on_boarding_data.dart';
 
@@ -147,6 +147,10 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                                       .read<OnboardingBloc>()
                                       .add(NextPageEvent());
                                   carouselController.nextPage();
+                                } else if (currentIndex == data.length - 1) {
+                                  // context
+                                  //     .read<OnboardingBloc>()
+                                  //     .add(DoneEvent());
                                 }
                               },
                               child: Text(
@@ -174,7 +178,9 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
       backgroundColor: Colors.transparent,
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            // context.read<OnboardingBloc>().add(DoneEvent());
+          },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

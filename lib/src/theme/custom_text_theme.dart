@@ -46,5 +46,14 @@ class CustomTextTheme {
         bodySmall: TextStyle(
           color: CustomColor.secondary1, // df:fs 12
         ),
+        labelLarge: TextStyle(
+          color: CustomColor.secondary1.withOpacity(0.5), // df:fs 14
+        ),
+        labelMedium: TextStyle(
+          color: CustomColor.secondary1.withOpacity(0.5), // df:fs 12
+        ),
+        labelSmall: TextStyle(
+          color: CustomColor.secondary1.withOpacity(0.5), // df:fs 10
+        ),
       );
 }

@@ -14,7 +14,7 @@ class AppRoutes {
   static String initialRoute = onBoarding;
 
   static Map<String, WidgetBuilder> routes = {
-    onBoarding: (context) => OnBoarding1Screen(),
+    onBoarding: (context) => OnBoardingScreen(),
     home: (context) => HomeScreen(),
     login: (context) => LoginScreen(),
     register: (context) => RegisterScreen(),

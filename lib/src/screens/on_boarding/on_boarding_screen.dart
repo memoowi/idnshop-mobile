@@ -3,21 +3,23 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:idnshop/src/bloc/onboarding_bloc.dart';
+import 'package:idnshop/src/bloc/onboarding/onboarding_bloc.dart';
+import 'package:idnshop/src/routes/app_routes.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
+import 'package:idnshop/src/utils/on_boarding_data.dart';
 
-class OnBoarding1Screen extends StatefulWidget {
-  const OnBoarding1Screen({super.key});
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
 
   @override
-  State<OnBoarding1Screen> createState() => _OnBoarding1ScreenState();
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
-class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  final data = OnBoardingData.data;
   int _backPressCount = 0;
   bool _canPop = false;
   Timer? _exitTimer;
-  int _currentIndex = 0;
 
   void _startExitTimer() {
     _exitTimer?.cancel(); // Cancel any existing timer
@@ -30,32 +32,6 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
   }
 
   final carouselController = CarouselController();
-  void _onItemChanged(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  List<Map<String, dynamic>> onBoardingData = [
-    {
-      "image": "assets/images/chara-1.png",
-      "title": "Shop Now",
-      "description":
-          "Discover the latest fashion trends and find the perfect pair for your style.",
-    },
-    {
-      "image": "assets/images/chara-2.png",
-      "title": "Fast Delivery",
-      "description":
-          "Get your favorite items at your doorsteps with our fast and reliable delivery service.",
-    },
-    {
-      "image": "assets/images/chara-3.png",
-      "title": "Easy Returns",
-      "description":
-          "Return your items in as little as 30 days with our hassle-free returns policy.",
-    },
-  ];
 
   @override
   void dispose() {
@@ -65,17 +41,29 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnboardingBloc, OnboardingState>(
+    return BlocConsumer<OnboardingBloc, OnboardingState>(
+      listener: (context, state) {
+        if (state is OnboardingDone) {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.home, (Route<dynamic> route) => false);
+        } else if (state is OnboardingGetStarted) {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.home, (Route<dynamic> route) => false);
+          Navigator.of(context).pushNamed(AppRoutes.register);
+        }
+      },
       builder: (context, state) {
+        int currentIndex = 0;
+        if (state is OnboardingPageChanged) {
+          currentIndex = state.currentIndex;
+        }
         return PopScope(
           canPop: _canPop,
           onPopInvoked: (didPop) {
             if (!didPop) {
-              if (_currentIndex != 0) {
+              if (currentIndex != 0) {
+                context.read<OnboardingBloc>().add(PreviousPageEvent());
                 carouselController.previousPage();
-                setState(() {
-                  _currentIndex = _currentIndex - 1;
-                });
                 return;
               }
               if (_backPressCount == 0) {
@@ -102,16 +90,18 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                 CarouselSlider(
                   carouselController: carouselController,
                   options: CarouselOptions(
-                    initialPage: _currentIndex,
+                    initialPage: currentIndex,
                     viewportFraction: 1.0,
                     height: MediaQuery.of(context).size.height * 0.6,
                     scrollDirection: Axis.horizontal,
                     enableInfiniteScroll: false,
                     onPageChanged: (index, reason) {
-                      _onItemChanged(index);
+                      context
+                          .read<OnboardingBloc>()
+                          .add(UpdatePageEvent(index));
                     },
                   ),
-                  items: onBoardingData.map((item) {
+                  items: data.map((item) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Image.asset(
@@ -130,13 +120,13 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                     child: Column(
                       children: [
                         Text(
-                          onBoardingData[_currentIndex]['title'],
+                          data[currentIndex]['title'],
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         const SizedBox(height: 16.0),
                         Text(
-                          onBoardingData[_currentIndex]['description'],
+                          data[currentIndex]['description'],
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
@@ -146,7 +136,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                           children: [
                             Row(
                               children: [
-                                for (int i = 0; i < onBoardingData.length; i++)
+                                for (int i = 0; i < data.length; i++)
                                   Container(
                                     width: 8.0,
                                     height: 8.0,
@@ -154,7 +144,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                                         horizontal: 5.0),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: _currentIndex == i
+                                      color: currentIndex == i
                                           ? CustomColor.secondary1
                                           : Colors.grey,
                                     ),
@@ -163,12 +153,22 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                             ),
                             FilledButton(
                               onPressed: () {
-                                if (_currentIndex < onBoardingData.length - 1) {
-                                  _onItemChanged(_currentIndex + 1);
+                                if (currentIndex < data.length - 1) {
+                                  context
+                                      .read<OnboardingBloc>()
+                                      .add(NextPageEvent());
                                   carouselController.nextPage();
+                                } else if (currentIndex == data.length - 1) {
+                                  context
+                                      .read<OnboardingBloc>()
+                                      .add(GetStartedEvent());
                                 }
                               },
-                              child: Text('Next'),
+                              child: Text(
+                                currentIndex == data.length - 1
+                                    ? 'Get Started'
+                                    : 'Next',
+                              ),
                             ),
                           ],
                         )
@@ -189,7 +189,9 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
       backgroundColor: Colors.transparent,
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            context.read<OnboardingBloc>().add(SkipEvent());
+          },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),

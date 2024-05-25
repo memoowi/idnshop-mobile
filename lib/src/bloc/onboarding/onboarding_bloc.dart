@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:idnshop/src/routes/app_routes.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,16 +17,23 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       final isOnboarded = prefs.getBool('isOnboarded') ?? false;
       if (isOnboarded) {
         emit(OnboardingDone());
+      } else {
+        emit(OnboardingPageChanged(0));
       }
-      emit(OnboardingPageChanged(0));
-      log('checking onboarding done');
       FlutterNativeSplash.remove();
+      log('state is ${state.runtimeType}');
     });
 
-    on<DoneEvent>((event, emit) async {
+    on<SkipEvent>((event, emit) async {
       final prefs = await SharedPreferences.getInstance();
       prefs.setBool('isOnboarded', true);
       emit(OnboardingDone());
+    });
+
+    on<GetStartedEvent>((event, emit) async {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isOnboarded', true);
+      emit(OnboardingGetStarted());
     });
 
     on<NextPageEvent>((event, emit) {

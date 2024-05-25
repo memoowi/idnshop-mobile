@@ -12,6 +12,8 @@ class UpdatePageEvent extends OnboardingEvent {
   UpdatePageEvent(this.newIndex);
 }
 
-class DoneEvent extends OnboardingEvent {}
+class SkipEvent extends OnboardingEvent {}
+
+class GetStartedEvent extends OnboardingEvent {}
 
 class CheckEvent extends OnboardingEvent {}

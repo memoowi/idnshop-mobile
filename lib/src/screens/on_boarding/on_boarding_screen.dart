@@ -4,17 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idnshop/src/bloc/onboarding/onboarding_bloc.dart';
+import 'package:idnshop/src/routes/app_routes.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/on_boarding_data.dart';
 
-class OnBoarding1Screen extends StatefulWidget {
-  const OnBoarding1Screen({super.key});
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
 
   @override
-  State<OnBoarding1Screen> createState() => _OnBoarding1ScreenState();
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
-class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final data = OnBoardingData.data;
   int _backPressCount = 0;
   bool _canPop = false;
@@ -40,7 +41,17 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OnboardingBloc, OnboardingState>(
+    return BlocConsumer<OnboardingBloc, OnboardingState>(
+      listener: (context, state) {
+        if (state is OnboardingDone) {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.home, (Route<dynamic> route) => false);
+        } else if (state is OnboardingGetStarted) {
+          Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.home, (Route<dynamic> route) => false);
+          Navigator.of(context).pushNamed(AppRoutes.register);
+        }
+      },
       builder: (context, state) {
         int currentIndex = 0;
         if (state is OnboardingPageChanged) {
@@ -148,9 +159,9 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
                                       .add(NextPageEvent());
                                   carouselController.nextPage();
                                 } else if (currentIndex == data.length - 1) {
-                                  // context
-                                  //     .read<OnboardingBloc>()
-                                  //     .add(DoneEvent());
+                                  context
+                                      .read<OnboardingBloc>()
+                                      .add(GetStartedEvent());
                                 }
                               },
                               child: Text(
@@ -179,7 +190,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
       actions: [
         TextButton(
           onPressed: () {
-            // context.read<OnboardingBloc>().add(DoneEvent());
+            context.read<OnboardingBloc>().add(SkipEvent());
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,

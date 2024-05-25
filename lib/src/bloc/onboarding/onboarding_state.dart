@@ -11,3 +11,5 @@ class OnboardingPageChanged extends OnboardingState {
 }
 
 final class OnboardingDone extends OnboardingState {}
+
+final class OnboardingGetStarted extends OnboardingState {}

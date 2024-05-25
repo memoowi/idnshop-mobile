@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:idnshop/src/bloc/onboarding/onboarding_bloc.dart';
 import 'package:idnshop/src/routes/app_routes.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
@@ -9,6 +10,8 @@ import 'package:idnshop/src/theme/custom_text_theme.dart';
 import 'package:idnshop/src/utils/config.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
     MultiBlocProvider(
       providers: [

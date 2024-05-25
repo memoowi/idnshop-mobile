@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,7 +18,8 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
         emit(OnboardingDone());
       }
       emit(OnboardingPageChanged(0));
-      log('state is ${state.runtimeType}');
+      log('checking onboarding done');
+      FlutterNativeSplash.remove();
     });
 
     on<DoneEvent>((event, emit) async {

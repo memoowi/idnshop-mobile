@@ -26,4 +26,71 @@ class SvgData {
       '$baseIconPath/solar_user-circle-bold.svg';
   static String get like => '$baseIconPath/solar_like-linear.svg';
   static String get likeFill => '$baseIconPath/solar_like-bold.svg';
+
+  // Social Media
+  static String get facebook => '$baseIconPath/ant-design_facebook-filled.svg';
+  static String get instagram =>
+      '$baseIconPath/ant-design_instagram-filled.svg';
+  static String get youtube => '$baseIconPath/ant-design_youtube-filled.svg';
+  static String get whatsapp => '$baseIconPath/bi_whatsapp.svg';
+
+  static String get arrowDown => '$baseIconPath/arrow-down.svg';
+  static String get arrowLeft => '$baseIconPath/arrow-left.svg';
+  static String get arrowRight => '$baseIconPath/arrow-right.svg';
+  static String get arrowUp => '$baseIconPath/arrow-up.svg';
+  static String get atSign => '$baseIconPath/at-sign.svg';
+  static String get clock => '$baseIconPath/bi_clock.svg';
+  static String get filterRight => '$baseIconPath/bi_filter-right.svg';
+  static String get search => '$baseIconPath/bi_search.svg';
+  static String get truck => '$baseIconPath/bi_truck.svg';
+  static String get product => '$baseIconPath/carbon_product.svg';
+  static String get worshipMuslim => '$baseIconPath/carbon_worship-muslim.svg';
+  static String get check => '$baseIconPath/check.svg';
+  static String get checkSquare => '$baseIconPath/check-square.svg';
+  static String get chevronDown => '$baseIconPath/chevron-down.svg';
+  static String get chevronLeft => '$baseIconPath/chevron-left.svg';
+  static String get chevronRight => '$baseIconPath/chevron-right.svg';
+  static String get chevronUp => '$baseIconPath/chevron-up.svg';
+  static String get eye => '$baseIconPath/eye.svg';
+  static String get eyeOff => '$baseIconPath/eye-off.svg';
+  static String get productList => '$baseIconPath/fluent-mdl2_product-list.svg';
+  static String get mosque =>
+      '$baseIconPath/fluent_building-mosque-24-regular.svg';
+  static String get imageAdd => '$baseIconPath/fluent_image-add-24_regular.svg';
+  static String get send => '$baseIconPath/fluent_send-24-regular.svg';
+  static String get hash => '$baseIconPath/hash.svg';
+  static String get payment => '$baseIconPath/ic_baseline-payment.svg';
+  static String get backReturn => '$baseIconPath/icon-park_return.svg';
+  static String get shippingFast => '$baseIconPath/la_shipping-fast.svg';
+  static String get lock => '$baseIconPath/lock.svg';
+  static String get map => '$baseIconPath/material-symbols_map.svg';
+  static String get reviewsOutline =>
+      '$baseIconPath/material-symbols_reviews-outline.svg';
+  static String get talk => '$baseIconPath/mdi_talk.svg';
+  static String get minus => '$baseIconPath/minus.svg';
+  static String get printHash => '$baseIconPath/pepicons-print_hash.svg';
+  static String get printSquare => '$baseIconPath/pepicons-print_square.svg';
+  static String get printSquareFilled =>
+      '$baseIconPath/pepicons-print_square-filled.svg';
+  static String get handHeart => '$baseIconPath/ph_hand-heart.svg';
+  static String get star => '$baseIconPath/ph_star.svg';
+  static String get starFill => '$baseIconPath/ph_star-fill.svg';
+  static String get plus => '$baseIconPath/plus.svg';
+  static String get sortDownFill => '$baseIconPath/prime_sort-down-fill.svg';
+  static String get paper => '$baseIconPath/quill_paper.svg';
+  static String get calendar => '$baseIconPath/radix-icons_calendar.svg';
+  static String get box => '$baseIconPath/solar_box-linear.svg';
+  static String get chatDots => '$baseIconPath/solar_chat-dots-linear.svg';
+  static String get hanger => '$baseIconPath/solar_hanger-bold.svg';
+  static String get infinity => '$baseIconPath/solar_infinity-bold.svg';
+  static String get infoCircle => '$baseIconPath/solar_info-circle-linear.svg';
+  static String get shieldCheck =>
+      '$baseIconPath/solar_shield-check-outline.svg';
+  static String get trashBin =>
+      '$baseIconPath/solar_trash-bin-minimalistic-2-linear.svg';
+  static String get square => '$baseIconPath/square.svg';
+  static String get enter => '$baseIconPath/uiw_enter.svg';
+  static String get pay => '$baseIconPath/uiw_pay.svg';
+  static String get user2 => '$baseIconPath/user.svg';
+  static String get close => '$baseIconPath/x.svg';
 }

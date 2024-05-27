@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:idnshop/src/screens/home_screen_pages/account_page.dart';
-import 'package:idnshop/src/screens/home_screen_pages/chat_page.dart';
-import 'package:idnshop/src/screens/home_screen_pages/collection_page.dart';
-import 'package:idnshop/src/screens/home_screen_pages/main_page.dart';
-import 'package:idnshop/src/screens/home_screen_pages/order_page.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
+import 'package:idnshop/src/utils/bottom_navigation_item_data.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,49 +11,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      tabs: [
-        PersistentTabConfig(
-          screen: MainPage(),
-          item: ItemConfig(
-            icon: Icon(CupertinoIcons.hand_thumbsup_fill),
-            inactiveIcon: Icon(CupertinoIcons.home),
-            activeForegroundColor: CustomColor.primary,
-            inactiveForegroundColor: CustomColor.secondary1,
-            title: "Home",
-            iconSize: 24,
-          ),
-        ),
-        PersistentTabConfig(
-          screen: CollectionPage(),
-          item: ItemConfig(
-            icon: Icon(Icons.settings),
-            title: "Collection",
-          ),
-        ),
-        PersistentTabConfig(
-          screen: OrderPage(),
-          item: ItemConfig(
-            icon: Icon(Icons.shopping_cart),
-            title: "Order",
-          ),
-        ),
-        PersistentTabConfig(
-          screen: ChatPage(),
-          item: ItemConfig(
-            icon: Icon(Icons.chat),
-            title: "Chat",
-          ),
-        ),
-        PersistentTabConfig(
-          screen: AccountPage(),
-          item: ItemConfig(
-            icon: Icon(
-              IconData(0xe902, fontFamily: 'Custom Font Icon'),
-            ),
-            title: "Account",
-          ),
-        ),
-      ],
+      tabs: BottomNavigationItemData.items
+          .map((item) => buildTab(
+                screen: item.screen,
+                title: item.label,
+                svgIconInactive: item.icon,
+                svgIconActive: item.activeIcon,
+              ))
+          .toList(),
       navBarHeight: 64,
       navBarBuilder: (navBarConfig) => Style10BottomNavBar(
         navBarConfig: navBarConfig,
@@ -68,6 +30,36 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  PersistentTabConfig buildTab({
+    required Widget screen,
+    required String title,
+    required String svgIconInactive,
+    required String svgIconActive,
+  }) {
+    return PersistentTabConfig(
+      screen: screen,
+      item: ItemConfig(
+        icon: SvgPicture.asset(
+          svgIconActive,
+          colorFilter: ColorFilter.mode(
+            CustomColor.primary,
+            BlendMode.srcIn,
+          ),
+        ),
+        activeForegroundColor: CustomColor.primary,
+        inactiveForegroundColor: CustomColor.secondary1,
+        inactiveIcon: SvgPicture.asset(
+          svgIconInactive,
+          colorFilter: ColorFilter.mode(
+            CustomColor.secondary1,
+            BlendMode.srcIn,
+          ),
+        ),
+        title: title,
       ),
     );
   }

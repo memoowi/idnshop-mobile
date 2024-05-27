@@ -13,7 +13,6 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 70,
         title: TextField(
           decoration: InputDecoration(
             hintText: 'Search products...',

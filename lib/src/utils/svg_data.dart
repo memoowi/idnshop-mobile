@@ -93,4 +93,9 @@ class SvgData {
   static String get pay => '$baseIconPath/uiw_pay.svg';
   static String get user2 => '$baseIconPath/user.svg';
   static String get close => '$baseIconPath/x.svg';
+  static String get magniferLinear => '$baseIconPath/solar_magnifer-linear.svg';
+  static String get magniferOutline =>
+      '$baseIconPath/solar_magnifer-outline.svg';
+  static String get magniferMinimalistic =>
+      '$baseIconPath/solar_minimalistic-magnifer-linear.svg';
 }

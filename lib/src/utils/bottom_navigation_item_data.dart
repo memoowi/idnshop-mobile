@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:idnshop/src/screens/home_screen_pages/account_page.dart';
 import 'package:idnshop/src/screens/home_screen_pages/chat_page.dart';
-import 'package:idnshop/src/screens/home_screen_pages/collection_page.dart';
+import 'package:idnshop/src/screens/home_screen_pages/search_page.dart';
 import 'package:idnshop/src/screens/home_screen_pages/main_page.dart';
-import 'package:idnshop/src/screens/home_screen_pages/order_page.dart';
+import 'package:idnshop/src/screens/home_screen_pages/cart_page.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
 
 class BottomNavigationItemData {
@@ -26,16 +26,16 @@ class BottomNavigationItemData {
           label: "Home",
         ),
         BottomNavigationItemData(
-          screen: CollectionPage(),
+          screen: SearchPage(),
           icon: SvgData.tag,
-          activeIcon: SvgData.tagFill,
-          label: "Collection",
+          activeIcon: SvgData.magniferLinear,
+          label: "Search",
         ),
         BottomNavigationItemData(
-          screen: OrderPage(),
+          screen: CartPage(),
           icon: SvgData.documentText,
-          activeIcon: SvgData.documentTextFill,
-          label: "Order",
+          activeIcon: SvgData.bagFill,
+          label: "Cart",
         ),
         BottomNavigationItemData(
           screen: ChatPage(),

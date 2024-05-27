@@ -4,7 +4,6 @@ import 'package:idnshop/src/screens/auth/register_screen.dart';
 import 'package:idnshop/src/screens/home_screen.dart';
 import 'package:idnshop/src/screens/auth/login_screen.dart';
 import 'package:idnshop/src/screens/on_boarding/on_boarding_screen.dart';
-import 'package:idnshop/src/screens/search_screen.dart';
 
 class AppRoutes {
   static const String onBoarding = '/on-boarding';
@@ -25,8 +24,6 @@ class AppRoutes {
         return _fadeTransition(LoginScreen());
       case register:
         return _fadeTransition(RegisterScreen());
-      case search:
-        return _slideTransition(SearchScreen());
       default:
         return _fadeTransition(HomeScreen());
     }

@@ -59,7 +59,7 @@ class MainPage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 16)
+          SizedBox(width: 4)
         ],
       ),
       body: SingleChildScrollView(

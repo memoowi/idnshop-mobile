@@ -8,7 +8,7 @@ class CustomAppBarTheme {
         foregroundColor: CustomColor.secondary1,
         surfaceTintColor: Colors.white,
         shadowColor: CustomColor.lightGrey,
-        scrolledUnderElevation: 4,
+        scrolledUnderElevation: 2,
         toolbarHeight: 64,
         titleTextStyle: TextStyle(
           fontFamily: CustomTextTheme.headingFontFamily,

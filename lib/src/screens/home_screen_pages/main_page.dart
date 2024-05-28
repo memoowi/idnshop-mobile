@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/src/screens/home_screen_pages/main_page_partials/best_selling_section.dart';
+import 'package:idnshop/src/screens/home_screen_pages/main_page_partials/new_arrival_section.dart';
+import 'package:idnshop/src/screens/home_screen_pages/main_page_partials/our_collection_section.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/theme/custom_text_theme.dart';
 import 'package:idnshop/src/utils/config.dart';
@@ -56,6 +59,7 @@ class MainPage extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(width: 16)
         ],
       ),
       body: SingleChildScrollView(
@@ -63,7 +67,9 @@ class MainPage extends StatelessWidget {
           children: [
             LoginReminder(),
             MainCarousel(),
+            OurCollectionSection(),
             BestSellingSection(),
+            NewArrivalSection(),
           ],
         ),
       ),

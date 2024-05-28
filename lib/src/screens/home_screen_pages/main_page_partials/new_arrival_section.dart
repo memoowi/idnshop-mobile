@@ -4,12 +4,12 @@ import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
 import 'package:idnshop/src/widgets/product_card.dart';
 
-class BestSellingSection extends StatelessWidget {
-  const BestSellingSection({
+class NewArrivalSection extends StatelessWidget {
+  const NewArrivalSection({
     super.key,
   });
 
-  List<Map<String, dynamic>> get bestSellingProducts => [
+  List<Map<String, dynamic>> get newArrivalProducts => [
         {
           'image': 'https://i.ibb.co.com/8zzc9M0/sweater.png',
           'title': 'Sweater',
@@ -58,7 +58,6 @@ class BestSellingSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: CustomColor.lightGrey,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
       child: Column(
         children: [
@@ -76,7 +75,7 @@ class BestSellingSection extends StatelessWidget {
               ),
               const SizedBox(width: 10),
               Text(
-                'Best Selling Products'.toUpperCase(),
+                'New Arrivals'.toUpperCase(),
                 style: Theme.of(context)
                     .textTheme
                     .titleLarge
@@ -90,18 +89,15 @@ class BestSellingSection extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 3 / 5.4,
-              // mainAxisExtent: 400,
+              childAspectRatio: 3 / 5.1,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
             ),
-            itemCount: bestSellingProducts.length,
+            itemCount: newArrivalProducts.length,
             itemBuilder: (context, index) {
               return ProductCard(
                 onTap: () {},
-                product: bestSellingProducts[index],
-                showBorder: true,
-                showStars: true,
+                product: newArrivalProducts[index],
               );
             },
           ),
@@ -111,7 +107,7 @@ class BestSellingSection extends StatelessWidget {
             style: FilledButton.styleFrom(
               minimumSize: Size(double.infinity, 50),
             ),
-            child: Text('View All'),
+            child: Text('See More Fresh Arrivals'),
           ),
         ],
       ),

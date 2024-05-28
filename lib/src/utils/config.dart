@@ -13,6 +13,8 @@ class Config {
     },
   ];
 
+  static const String baseApiUrl = 'https://127.0.0.1:8000/api/';
+
   // static const String baseUrl = 'https://idnshop.herokuapp.com/api/';
 
   // static const String imageBaseUrl = 'https://idnshop.herokuapp.com/images/';

@@ -63,6 +63,7 @@ class _MainCarouselState extends State<MainCarousel> {
               );
             },
             effect: ExpandingDotsEffect(
+              expansionFactor: 4,
               dotWidth: 8,
               dotHeight: 8,
               spacing: 4,

@@ -98,4 +98,12 @@ class SvgData {
       '$baseIconPath/solar_magnifer-outline.svg';
   static String get magniferMinimalistic =>
       '$baseIconPath/solar_minimalistic-magnifer-linear.svg';
+  static String get billListLinear =>
+      '$baseIconPath/solar_bill-list-linear.svg';
+  static String get billListFilled => '$baseIconPath/solar_bill-list-bold.svg';
+  static String get widget2Linear => '$baseIconPath/solar_widget-2-linear.svg';
+  static String get widget2Filled => '$baseIconPath/solar_widget-2-bold.svg';
+  static String get libraryLinear => '$baseIconPath/solar_library-linear.svg';
+  static String get libraryFilledDuo =>
+      '$baseIconPath/solar_library-bold-duotone.svg';
 }

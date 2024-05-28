@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:idnshop/src/screens/home_screen_pages/main_page_partials/best_selling_section.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/theme/custom_text_theme.dart';
 import 'package:idnshop/src/utils/config.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
-import 'package:idnshop/src/widgets/login_reminder.dart';
-import 'package:idnshop/src/widgets/main_carousel.dart';
+import 'package:idnshop/src/screens/home_screen_pages/main_page_partials/login_reminder.dart';
+import 'package:idnshop/src/screens/home_screen_pages/main_page_partials/main_carousel.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({
@@ -15,6 +16,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Row(
           children: [
@@ -61,6 +63,7 @@ class MainPage extends StatelessWidget {
           children: [
             LoginReminder(),
             MainCarousel(),
+            BestSellingSection(),
           ],
         ),
       ),

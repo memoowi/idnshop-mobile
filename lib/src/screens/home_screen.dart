@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      navBarOverlap: NavBarOverlap.none(),
       tabs: BottomNavigationItemData.items
           .map((item) => buildTab(
                 screen: item.screen,

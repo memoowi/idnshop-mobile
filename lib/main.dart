@@ -7,6 +7,7 @@ import 'package:idnshop/src/routes/app_routes.dart';
 import 'package:idnshop/src/theme/custom_app_bar_theme.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/theme/custom_filled_button_theme.dart';
+import 'package:idnshop/src/theme/custom_outlined_button_theme.dart';
 import 'package:idnshop/src/theme/custom_text_button_theme.dart';
 import 'package:idnshop/src/theme/custom_text_theme.dart';
 import 'package:idnshop/src/utils/config.dart';
@@ -38,12 +39,13 @@ class MyApp extends StatelessWidget {
       title: Config.appName,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: CustomColor.primary),
-        appBarTheme: CustomAppBarTheme.customAppBarTheme,
+        appBarTheme: CustomAppBarTheme.defaultTheme,
         scaffoldBackgroundColor: Colors.white,
         fontFamily: CustomTextTheme.baseFontFamily,
-        textTheme: CustomTextTheme.customTextTheme,
-        textButtonTheme: CustomTextButtonTheme.customTextButtonTheme,
-        filledButtonTheme: CustomFilledButtonTheme.customFilledButtonTheme,
+        textTheme: CustomTextTheme.defaultTheme,
+        textButtonTheme: CustomTextButtonTheme.defaultTheme,
+        filledButtonTheme: CustomFilledButtonTheme.defaultTheme,
+        outlinedButtonTheme: CustomOutlinedButtonTheme.defaultTheme,
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: Config.debug,

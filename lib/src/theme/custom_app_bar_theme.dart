@@ -3,7 +3,7 @@ import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/theme/custom_text_theme.dart';
 
 class CustomAppBarTheme {
-  static AppBarTheme get customAppBarTheme => AppBarTheme(
+  static AppBarTheme get defaultTheme => AppBarTheme(
         backgroundColor: Colors.white,
         foregroundColor: CustomColor.secondary1,
         surfaceTintColor: Colors.white,

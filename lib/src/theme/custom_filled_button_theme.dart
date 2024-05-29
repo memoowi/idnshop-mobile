@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 
 class CustomFilledButtonTheme {
-  static FilledButtonThemeData get customFilledButtonTheme =>
+  static FilledButtonThemeData get defaultTheme =>
       FilledButtonThemeData(
-        style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all(CustomColor.primary),
-          foregroundColor: WidgetStateProperty.all(Colors.white),
-          shape: WidgetStateProperty.all(
-              const RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
-          textStyle: WidgetStateProperty.all(const TextStyle(
-            fontWeight: FontWeight.bold,
+        style: FilledButton.styleFrom(
+          backgroundColor: CustomColor.primary,
+          foregroundColor: Colors.white,
+          disabledBackgroundColor: CustomColor.primary.withOpacity(0.5),
+          disabledForegroundColor: Colors.white,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero,
+          ),
+          textStyle: const TextStyle(
+            fontWeight: FontWeight.w700,
             fontSize: 16,
-          )),
-          minimumSize: WidgetStateProperty.all(const Size(100, 50)),
+          ),
+          minimumSize: const Size(100, 50),
         ),
       );
 }

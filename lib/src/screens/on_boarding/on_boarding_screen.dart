@@ -135,23 +135,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // Row(
-                            //   children: [
-                            //     for (int i = 0; i < items.length; i++)
-                            //       Container(
-                            //         width: 8.0,
-                            //         height: 8.0,
-                            //         margin: const EdgeInsets.symmetric(
-                            //             horizontal: 5.0),
-                            //         decoration: BoxDecoration(
-                            //           shape: BoxShape.circle,
-                            //           color: currentIndex == i
-                            //               ? CustomColor.secondary1
-                            //               : Colors.grey,
-                            //         ),
-                            //       ),
-                            //   ],
-                            // ),
                             AnimatedSmoothIndicator(
                               activeIndex: currentIndex,
                               count: items.length,

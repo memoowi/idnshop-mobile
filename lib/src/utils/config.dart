@@ -2,6 +2,8 @@ class Config {
   static const String appVersion = '1.0.0';
   static const String appName = 'IDNShop';
   static const bool debug = false;
+  static const String whatsappNumber = '6281330000000';
+  static const String emailAddress = 'idnshop@example.com';
   static const List<Map<String, dynamic>> appAuthor = [
     {
       'name': 'memoowi',

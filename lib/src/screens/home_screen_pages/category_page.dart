@@ -10,7 +10,7 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Category'),
+        title: const Text('Shop By Category'),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -36,28 +36,31 @@ class CategoryPage extends StatelessWidget {
         ),
         itemCount: 7,
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-              AspectRatio(
-                aspectRatio: 1 / 1,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  color: CustomColor.lightGrey,
-                  child: Image.network(
-                    'https://i.ibb.co.com/3SpLWds/cap.png',
-                    fit: BoxFit.contain,
+          return InkWell(
+            onTap: () {},
+            child: Column(
+              children: [
+                AspectRatio(
+                  aspectRatio: 1 / 1,
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    color: CustomColor.lightGrey,
+                    child: Image.network(
+                      'https://i.ibb.co.com/3SpLWds/cap.png',
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'SweaterSweaterSweaterSweater',
-                style: Theme.of(context).textTheme.bodyLarge,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-              ),
-            ],
+                const SizedBox(height: 8),
+                Text(
+                  'SweaterSweaterSweaterSweater',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           );
         },
       ),

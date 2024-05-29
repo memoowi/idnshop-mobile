@@ -106,4 +106,29 @@ class SvgData {
   static String get libraryLinear => '$baseIconPath/solar_library-linear.svg';
   static String get libraryFilledDuo =>
       '$baseIconPath/solar_library-bold-duotone.svg';
+  static String get global => '$baseIconPath/solar_global-linear.svg';
+  static String get globalFilled => '$baseIconPath/solar_global-bold.svg';
+  static String get lock2 =>
+      '$baseIconPath/solar_lock-keyhole-minimalistic-linear.svg';
+  static String get lock2Filled =>
+      '$baseIconPath/solar_lock-keyhole-minimalistic-bold.svg';
+  static String get shop => '$baseIconPath/solar_shop-2-linear.svg';
+  static String get shopFilled => '$baseIconPath/solar_shop-2-bold.svg';
+  static String get setting => '$baseIconPath/solar_settings-linear.svg';
+  static String get settingFilled => '$baseIconPath/solar_settings-bold.svg';
+  static String get help => '$baseIconPath/solar_help-linear.svg';
+  static String get helpFilled => '$baseIconPath/solar_help-bold.svg';
+  static String get questionSquare =>
+      '$baseIconPath/solar_question-square-linear.svg';
+  static String get questionSquareFilled =>
+      '$baseIconPath/solar_question-square-bold.svg';
+  static String get fileText => '$baseIconPath/solar_file-text-linear.svg';
+  static String get fileTextFilled => '$baseIconPath/solar_file-text-bold.svg';
+  static String get privacyPolicy => '$baseIconPath/iconoir_privacy-policy.svg';
+  static String get documentTableTruck =>
+      '$baseIconPath/fluent_document-table-truck-24-regular.svg';
+  static String get documentDataLock =>
+      '$baseIconPath/fluent_document-data-lock-24-regular.svg';
+  static String get fileLock => '$baseIconPath/bi_file-earmark-lock.svg';
+  static String get logout => '$baseIconPath/solar_logout-outline.svg';
 }

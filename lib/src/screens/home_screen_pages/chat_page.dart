@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -7,7 +5,6 @@ import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/config.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
 import 'package:lottie/lottie.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class ChatPage extends StatelessWidget {
@@ -67,7 +64,7 @@ class ChatPage extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  'OR\nContact us via',
+                  'OR\nContact us on',
                   style: Theme.of(context).textTheme.labelLarge,
                   textAlign: TextAlign.center,
                 ),
@@ -97,7 +94,7 @@ class ChatPage extends StatelessWidget {
                         );
                       }
                     },
-                    label: Text('WhatsApp us'),
+                    label: Text('via WhatsApp'),
                     icon: SvgPicture.asset(
                       SvgData.whatsapp,
                       colorFilter: ColorFilter.mode(
@@ -123,11 +120,11 @@ class ChatPage extends StatelessWidget {
                         );
                       }
                     },
-                    label: Text('Email us'),
+                    label: Text('via Email'),
                     icon: SvgPicture.asset(
                       SvgData.atSign,
                       colorFilter: ColorFilter.mode(
-                        CustomColor.secondary1,
+                        CustomColor.primary,
                         BlendMode.srcIn,
                       ),
                       width: 20,

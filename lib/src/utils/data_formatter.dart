@@ -12,7 +12,7 @@ class DataFormatter {
   }
 
   static String formatDate(DateTime date) {
-    final dateFormatter = DateFormat('dd MMMM yyyy', 'id');
+    final dateFormatter = DateFormat('dd MMMM yyyy');
     return dateFormatter.format(date);
   }
 }

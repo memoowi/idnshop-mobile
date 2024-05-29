@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
-import 'package:idnshop/src/widgets/account_setting_tile.dart';
 import 'package:idnshop/src/widgets/support_tile.dart';
 
 class SupportSection extends StatelessWidget {

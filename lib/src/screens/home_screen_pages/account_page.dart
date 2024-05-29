@@ -6,7 +6,7 @@ import 'package:idnshop/src/screens/home_screen_pages/account_page_partials/prof
 import 'package:idnshop/src/screens/home_screen_pages/account_page_partials/support_section.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
-import 'package:idnshop/src/widgets/support_tile.dart';
+import 'package:lottie/lottie.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -62,7 +62,10 @@ class AccountPage extends StatelessWidget {
                     ?.copyWith(fontWeight: FontWeight.w700),
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
+            Lottie.asset(
+              'assets/lottie/custom-footer.json',
+            ),
           ],
         ),
       ),

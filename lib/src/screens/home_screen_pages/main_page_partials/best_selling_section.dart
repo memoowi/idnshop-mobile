@@ -90,7 +90,7 @@ class BestSellingSection extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 3 / 5.4,
+              childAspectRatio: 3 / 5.5,
               // mainAxisExtent: 400,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,

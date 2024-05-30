@@ -89,7 +89,7 @@ class NewArrivalSection extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 3 / 5.1,
+              childAspectRatio: 3 / 5.3,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
             ),

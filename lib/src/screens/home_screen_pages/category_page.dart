@@ -32,7 +32,7 @@ class CategoryPage extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 20,
           crossAxisSpacing: 20,
-          childAspectRatio: 1 / 1.3,
+          childAspectRatio: 1 / 1.35,
         ),
         itemCount: 7,
         itemBuilder: (context, index) {

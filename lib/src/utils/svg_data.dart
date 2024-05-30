@@ -131,4 +131,9 @@ class SvgData {
       '$baseIconPath/fluent_document-data-lock-24-regular.svg';
   static String get fileLock => '$baseIconPath/bi_file-earmark-lock.svg';
   static String get logout => '$baseIconPath/solar_logout-outline.svg';
+  static String get idnshopLight => '$baseIconPath/idnshop-light.svg';
+  static String get idnshopDark => '$baseIconPath/idnshop-dark.svg';
+  static String get idnLight => '$baseIconPath/idn-light.svg';
+  static String get idnDark => '$baseIconPath/idn-dark.svg';
+  static String get robotHead => '$baseIconPath/robot-head.svg';
 }

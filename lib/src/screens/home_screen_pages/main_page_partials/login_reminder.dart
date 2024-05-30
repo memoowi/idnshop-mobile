@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:idnshop/src/utils/svg_data.dart';
 
 class LoginReminder extends StatelessWidget {
   const LoginReminder({
@@ -13,7 +14,7 @@ class LoginReminder extends StatelessWidget {
       child: Row(
         children: [
           SvgPicture.asset(
-            'assets/images/robot-head.svg',
+            SvgData.robotHead,
             width: 40,
           ),
           SizedBox(width: 16),

@@ -21,9 +21,9 @@ class AppRoutes {
       case home:
         return _fadeTransition(HomeScreen());
       case login:
-        return _fadeTransition(LoginScreen());
+        return _slideTransition(LoginScreen());
       case register:
-        return _fadeTransition(RegisterScreen());
+        return _slideTransition(RegisterScreen());
       default:
         return _fadeTransition(HomeScreen());
     }

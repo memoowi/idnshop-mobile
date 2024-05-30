@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:idnshop/src/bloc/onboarding/onboarding_bloc.dart';
 import 'package:idnshop/src/routes/app_routes.dart';
-import 'package:idnshop/src/screens/home_screen.dart';
-import 'package:idnshop/src/screens/on_boarding/on_boarding_screen.dart';
+import 'package:idnshop/src/theme/custom_app_bar_theme.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/theme/custom_filled_button_theme.dart';
+import 'package:idnshop/src/theme/custom_outlined_button_theme.dart';
 import 'package:idnshop/src/theme/custom_text_button_theme.dart';
 import 'package:idnshop/src/theme/custom_text_theme.dart';
 import 'package:idnshop/src/utils/config.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
     MultiBlocProvider(
@@ -35,16 +39,18 @@ class MyApp extends StatelessWidget {
       title: Config.appName,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: CustomColor.primary),
+        appBarTheme: CustomAppBarTheme.defaultTheme,
         scaffoldBackgroundColor: Colors.white,
         fontFamily: CustomTextTheme.baseFontFamily,
-        textTheme: CustomTextTheme.customTextTheme,
-        textButtonTheme: CustomTextButtonTheme.customTextButtonTheme,
-        filledButtonTheme: CustomFilledButtonTheme.customFilledButtonTheme,
+        textTheme: CustomTextTheme.defaultTheme,
+        textButtonTheme: CustomTextButtonTheme.defaultTheme,
+        filledButtonTheme: CustomFilledButtonTheme.defaultTheme,
+        outlinedButtonTheme: CustomOutlinedButtonTheme.defaultTheme,
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: Config.debug,
-      routes: AppRoutes.routes,
       initialRoute: AppRoutes.initialRoute,
+      onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:idnshop/src/bloc/onboarding/onboarding_bloc.dart';
 import 'package:idnshop/src/routes/app_routes.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/on_boarding_data.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -16,7 +17,7 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  final data = OnBoardingData.data;
+  final List<OnBoardingData> items = OnBoardingData.items;
   int _backPressCount = 0;
   bool _canPop = false;
   Timer? _exitTimer;
@@ -101,11 +102,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           .add(UpdatePageEvent(index));
                     },
                   ),
-                  items: data.map((item) {
+                  items: items.map((item) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Image.asset(
-                          item['image'],
+                          item.image,
                         );
                       },
                     );
@@ -120,13 +121,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: Column(
                       children: [
                         Text(
-                          data[currentIndex]['title'],
+                          items[currentIndex].title,
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
                         const SizedBox(height: 16.0),
                         Text(
-                          data[currentIndex]['description'],
+                          items[currentIndex].description,
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
@@ -134,38 +135,39 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              children: [
-                                for (int i = 0; i < data.length; i++)
-                                  Container(
-                                    width: 8.0,
-                                    height: 8.0,
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 5.0),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: currentIndex == i
-                                          ? CustomColor.secondary1
-                                          : Colors.grey,
-                                    ),
-                                  ),
-                              ],
+                            AnimatedSmoothIndicator(
+                              activeIndex: currentIndex,
+                              count: items.length,
+                              onDotClicked: (index) {
+                                return carouselController.animateToPage(
+                                  index,
+                                  duration: const Duration(milliseconds: 500),
+                                  curve: Curves.easeInOut,
+                                );
+                              },
+                              effect: JumpingDotEffect(
+                                activeDotColor: CustomColor.primary,
+                                dotColor: CustomColor.border,
+                                dotHeight: 10.0,
+                                dotWidth: 10.0,
+                                verticalOffset: 10.0,
+                              ),
                             ),
                             FilledButton(
                               onPressed: () {
-                                if (currentIndex < data.length - 1) {
+                                if (currentIndex < items.length - 1) {
                                   context
                                       .read<OnboardingBloc>()
                                       .add(NextPageEvent());
                                   carouselController.nextPage();
-                                } else if (currentIndex == data.length - 1) {
+                                } else if (currentIndex == items.length - 1) {
                                   context
                                       .read<OnboardingBloc>()
                                       .add(GetStartedEvent());
                                 }
                               },
                               child: Text(
-                                currentIndex == data.length - 1
+                                currentIndex == items.length - 1
                                     ? 'Get Started'
                                     : 'Next',
                               ),
@@ -186,6 +188,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   AppBar appBar() {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       actions: [
         TextButton(

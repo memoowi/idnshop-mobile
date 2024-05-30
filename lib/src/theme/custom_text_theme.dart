@@ -6,7 +6,7 @@ class CustomTextTheme {
   static const String headingFontFamily = 'Rubik';
   static const String brandFontFamily = 'Squada One';
 
-  static TextTheme get customTextTheme => TextTheme(
+  static TextTheme get defaultTheme => TextTheme(
         headlineLarge: TextStyle(
           fontFamily: headingFontFamily,
           color: CustomColor.secondary1,
@@ -45,6 +45,15 @@ class CustomTextTheme {
         ),
         bodySmall: TextStyle(
           color: CustomColor.secondary1, // df:fs 12
+        ),
+        labelLarge: TextStyle(
+          color: CustomColor.secondary1.withOpacity(0.5), // df:fs 14
+        ),
+        labelMedium: TextStyle(
+          color: CustomColor.secondary1.withOpacity(0.5), // df:fs 12
+        ),
+        labelSmall: TextStyle(
+          color: CustomColor.secondary1.withOpacity(0.5), // df:fs 10
         ),
       );
 }

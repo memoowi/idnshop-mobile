@@ -11,8 +11,13 @@ class DataFormatter {
     return currencyFormatter.format(value);
   }
 
-  static String formatDate(DateTime date) {
+  static String ddMMMMyyyy(DateTime date) {
     final dateFormatter = DateFormat('dd MMMM yyyy');
+    return dateFormatter.format(date);
+  }
+
+  static String ddMMyyyy(DateTime date) {
+    final dateFormatter = DateFormat('dd/MM/yyyy');
     return dateFormatter.format(date);
   }
 }

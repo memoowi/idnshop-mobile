@@ -11,16 +11,18 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
       child: Column(
         children: [
+          const Divider(color: CustomColor.lightGrey),
+          const SizedBox(height: 16),
           Text(
             'from',
             style: Theme.of(context).textTheme.bodySmall,
           ),
           SvgPicture.asset(
             SvgData.idnshopDark,
-            colorFilter: ColorFilter.mode(
+            colorFilter: const ColorFilter.mode(
               CustomColor.primary,
               BlendMode.srcIn,
             ),

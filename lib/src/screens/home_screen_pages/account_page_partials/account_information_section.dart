@@ -63,7 +63,7 @@ class AccountInformationSection extends StatelessWidget {
           AccountInfoTile(
             onTap: () {},
             leading: 'Birth Date',
-            title: DataFormatter.formatDate(DateTime.now()),
+            title: DataFormatter.ddMMMMyyyy(DateTime.now()),
             icon: CupertinoIcons.chevron_forward,
           ),
           const SizedBox(height: 8),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/src/screens/home_screen_pages/order_page_partials/no_orders_found.dart';
+import 'package:idnshop/src/screens/home_screen_pages/order_page_partials/order_list_section.dart';
+import 'package:idnshop/src/widgets/footer.dart';
 import 'package:idnshop/src/screens/home_screen_pages/order_page_partials/status_filter.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
@@ -32,7 +34,9 @@ class OrderPage extends StatelessWidget {
         child: Column(
           children: [
             StatusFilter(),
-            NoOrdersFound(),
+            // NoOrdersFound(),
+            OrderListSection(),
+            Footer(),
           ],
         ),
       ),

@@ -22,9 +22,9 @@ class PreloadScreen extends StatelessWidget {
       body: BlocListener<AppStartCubit, AppStartState>(
         listener: (context, state) {
           if (state is ToHome) {
-            FlutterNativeSplash.remove();
-            Future.delayed(const Duration(seconds: 2), () {
-              Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+            Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+            Future.delayed(const Duration(seconds: 1), () {
+              FlutterNativeSplash.remove();
             });
           } else if (state is ToOnBoarding) {
             Navigator.of(context).pushReplacementNamed(AppRoutes.onBoarding);

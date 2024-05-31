@@ -6,120 +6,120 @@ class OrderListSection extends StatelessWidget {
     super.key,
   });
 
-  final List<Map<dynamic, dynamic>> orders = [
-    {
-      "id": 'IVR/20240203/XXIV/II/1929971609',
-      "status": "Pending",
-      "order_date": "2023-12-31 23:59:59.000000",
-      "items": [
+  List<Map<dynamic, dynamic>> get orders => [
         {
-          "name": "Shoes",
-          "image": "https://picsum.photos/200",
-          "qty": 1,
-          "color": "violet",
-          "size": "xl",
-          "price": 200000,
+          "id": 'IVR/20240203/XXIV/II/1929971609',
+          "status": "Pending",
+          "order_date": "2023-12-31 23:59:59.000000",
+          "items": [
+            {
+              "name": "Shoes",
+              "image": "https://i.ibb.co.com/ZBv3QNN/js.png",
+              "qty": 1,
+              "color": "violet",
+              "size": "xl",
+              "price": 200000,
+            },
+          ],
+          "total": 200000,
         },
-      ],
-      "total": 200000,
-    },
-    {
-      "id": 'IVR/20240203/XXIV/II/1929971609',
-      "status": "Packed",
-      "order_date": "2023-12-31 23:59:59.000000",
-      "items": [
         {
-          "name": "Shoes",
-          "image": "https://picsum.photos/200",
-          "qty": 1,
-          "color": "violet",
-          "size": "xl",
-          "price": 200000,
+          "id": 'IVR/20240203/XXIV/II/1929971609',
+          "status": "Packed",
+          "order_date": "2023-12-31 23:59:59.000000",
+          "items": [
+            {
+              "name": "Shoes",
+              "image": "https://picsum.photos/200",
+              "qty": 1,
+              "color": "violet",
+              "size": "xl",
+              "price": 200000,
+            },
+          ],
+          "total": 200000,
         },
-      ],
-      "total": 200000,
-    },
-    {
-      "id": 'IVR/20240203/XXIV/II/1929971609',
-      "status": "Delivered",
-      "order_date": "2023-12-31 23:59:59.000000",
-      "items": [
         {
-          "name": "Shoes",
-          "image": "https://picsum.photos/200",
-          "qty": 1,
-          "color": "violet",
-          "size": "xl",
-          "price": 200000,
+          "id": 'IVR/20240203/XXIV/II/1929971609',
+          "status": "Delivered",
+          "order_date": "2023-12-31 23:59:59.000000",
+          "items": [
+            {
+              "name": "Shoes",
+              "image": "https://picsum.photos/200",
+              "qty": 1,
+              "color": "violet",
+              "size": "xl",
+              "price": 200000,
+            },
+          ],
+          "total": 200000,
         },
-      ],
-      "total": 200000,
-    },
-    {
-      "id": 'IVR/20240203/XXIV/II/1929971609',
-      "status": "Arrived",
-      "order_date": "2023-12-31 23:59:59.000000",
-      "items": [
         {
-          "name": "Shoes",
-          "image": "https://picsum.photos/200",
-          "qty": 1,
-          "color": "violet",
-          "size": "xl",
-          "price": 200000,
+          "id": 'IVR/20240203/XXIV/II/1929971609',
+          "status": "Arrived",
+          "order_date": "2023-12-31 23:59:59.000000",
+          "items": [
+            {
+              "name": "Shoes",
+              "image": "https://picsum.photos/200",
+              "qty": 1,
+              "color": "violet",
+              "size": "xl",
+              "price": 200000,
+            },
+          ],
+          "total": 200000,
         },
-      ],
-      "total": 200000,
-    },
-    {
-      "id": 'IVR/20240203/XXIV/II/1929971609',
-      "status": "Completed",
-      "order_date": "2023-12-31 23:59:59.000000",
-      "items": [
         {
-          "name": "Shoes",
-          "image": "https://picsum.photos/200",
-          "qty": 1,
-          "color": "violet",
-          "size": "xl",
-          "price": 200000,
+          "id": 'IVR/20240203/XXIV/II/1929971609',
+          "status": "Completed",
+          "order_date": "2023-12-31 23:59:59.000000",
+          "items": [
+            {
+              "name": "Shoes",
+              "image": "https://picsum.photos/200",
+              "qty": 1,
+              "color": "violet",
+              "size": "xl",
+              "price": 200000,
+            },
+          ],
+          "total": 200000,
         },
-      ],
-      "total": 200000,
-    },
-    {
-      "id": 'IVR/20240203/XXIV/II/1929971609',
-      "status": "Canceled",
-      "order_date": "2023-12-31 23:59:59.000000",
-      "items": [
         {
-          "name": "Shoes",
-          "image": "https://picsum.photos/200",
-          "qty": 1,
-          "color": "violet",
-          "size": "xl",
-          "price": 200000,
+          "id": 'IVR/20240203/XXIV/II/1929971609',
+          "status": "Canceled",
+          "order_date": "2023-12-31 23:59:59.000000",
+          "items": [
+            {
+              "name": "Shoes",
+              "image": "https://picsum.photos/200",
+              "qty": 1,
+              "color": "violet",
+              "size": "xl",
+              "price": 200000,
+            },
+          ],
+          "total": 200000,
         },
-      ],
-      "total": 200000,
-    },
-    {
-      "id": 'IVR/20240203/XXIV/II/1929971609',
-      "status": "Return",
-      "order_date": "2023-12-31 23:59:59.000000",
-      "items": [
         {
-          "name": "Shoes",
-          "image": "https://picsum.photos/200",
-          "qty": 1,
-          "color": "violet",
-          "size": "xl",
-          "price": 200000,
+          "id": 'IVR/20240203/XXIV/II/1929971609',
+          "status": "Return",
+          "order_date": "2023-12-31 23:59:59.000000",
+          "items": [
+            {
+              "name": "Shoes",
+              "image": "https://picsum.photos/200",
+              "qty": 1,
+              "color": "violet",
+              "size": "xl",
+              "price": 200000,
+            },
+          ],
+          "total": 200000,
         },
-      ],
-      "total": 200000,
-    },
-  ];
+      ];
 
   @override
   Widget build(BuildContext context) {

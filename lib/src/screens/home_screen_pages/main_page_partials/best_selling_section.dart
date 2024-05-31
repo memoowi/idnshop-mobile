@@ -67,7 +67,7 @@ class BestSellingSection extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 SvgData.printHash,
-                colorFilter: ColorFilter.mode(
+                colorFilter: const ColorFilter.mode(
                   CustomColor.primary,
                   BlendMode.srcIn,
                 ),
@@ -111,7 +111,7 @@ class BestSellingSection extends StatelessWidget {
             style: FilledButton.styleFrom(
               minimumSize: Size(double.infinity, 50),
             ),
-            child: Text('View All'),
+            child: const Text('View All'),
           ),
         ],
       ),

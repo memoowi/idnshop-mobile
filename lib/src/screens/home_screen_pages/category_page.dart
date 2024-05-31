@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
+import 'package:idnshop/src/widgets/custom_cached_network_image.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -45,8 +46,8 @@ class CategoryPage extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(8),
                     color: CustomColor.lightGrey,
-                    child: Image.network(
-                      'https://i.ibb.co.com/3SpLWds/cap.png',
+                    child: CustomCachedNetworkImage(
+                      imageUrl: 'https://i.ibb.co.com/xXY8VYv/shoes.png',
                       fit: BoxFit.contain,
                     ),
                   ),

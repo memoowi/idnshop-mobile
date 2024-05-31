@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
@@ -76,8 +77,11 @@ class OurCollectionSection extends StatelessWidget {
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
+                        color: CustomColor.lightGrey,
                         image: DecorationImage(
-                          image: NetworkImage(items[index]['image']),
+                          image: CachedNetworkImageProvider(
+                            items[index]['image'],
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),

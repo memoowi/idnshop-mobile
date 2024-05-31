@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,18 +20,18 @@ class ProfileImageSection extends StatelessWidget {
           CircleAvatar(
             radius: 64,
             backgroundColor: CustomColor.accent1,
-            child: SvgPicture.asset(
-              SvgData.userFill,
-              colorFilter: ColorFilter.mode(
-                CustomColor.primary,
-                BlendMode.srcIn,
-              ),
-              width: 64,
-              height: 64,
-            ),
-            // foregroundImage: NetworkImage(
-            //   'https://i.ibb.co.com/VHcWrL7/download.jpg',
+            // child: SvgPicture.asset(
+            //   SvgData.userFill,
+            //   colorFilter: const ColorFilter.mode(
+            //     CustomColor.primary,
+            //     BlendMode.srcIn,
+            //   ),
+            //   width: 64,
+            //   height: 64,
             // ),
+            foregroundImage: CachedNetworkImageProvider(
+              'https://i.ibb.co.com/VHcWrL7/download.jpg',
+            ),
           ),
           Positioned(
             top: -4,
@@ -54,7 +55,7 @@ class ProfileImageSection extends StatelessWidget {
                                 'Edit Profile Image',
                                 style: Theme.of(context).textTheme.titleMedium,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               IconButton(
                                 onPressed: () {
                                   Navigator.pop(context);

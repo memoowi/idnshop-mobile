@@ -22,13 +22,13 @@ class AccountPage extends StatelessWidget {
             onPressed: () {},
             icon: SvgPicture.asset(
               SvgData.bag,
-              colorFilter: ColorFilter.mode(
+              colorFilter: const ColorFilter.mode(
                 CustomColor.secondary1,
                 BlendMode.srcIn,
               ),
             ),
           ),
-          SizedBox(width: 4)
+          const SizedBox(width: 4)
         ],
       ),
       body: SingleChildScrollView(
@@ -44,10 +44,10 @@ class AccountPage extends StatelessWidget {
             const Divider(),
             ListTile(
               onTap: () {},
-              contentPadding: EdgeInsets.symmetric(horizontal: 24),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 24),
               leading: SvgPicture.asset(
                 SvgData.logout,
-                colorFilter: ColorFilter.mode(
+                colorFilter: const ColorFilter.mode(
                   CustomColor.red,
                   BlendMode.srcIn,
                 ),

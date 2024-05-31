@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/data_formatter.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
+import 'package:idnshop/src/widgets/custom_cached_network_image.dart';
 
 class ProductCard extends StatelessWidget {
   final Map<String, dynamic> product;
@@ -39,9 +40,9 @@ class ProductCard extends StatelessWidget {
               aspectRatio: 3 / 4,
               child: Container(
                 color: CustomColor.accent1,
-                child: Image.network(
-                  product['image'],
-                  fit: BoxFit.contain,
+                child: CustomCachedNetworkImage(
+                  imageUrl: product['image'],
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

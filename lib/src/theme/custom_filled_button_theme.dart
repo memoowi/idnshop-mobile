@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 
 class CustomFilledButtonTheme {
-  static FilledButtonThemeData get defaultTheme =>
-      FilledButtonThemeData(
+  static FilledButtonThemeData get defaultTheme => FilledButtonThemeData(
         style: FilledButton.styleFrom(
           backgroundColor: CustomColor.primary,
           foregroundColor: Colors.white,

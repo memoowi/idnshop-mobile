@@ -10,15 +10,22 @@ class MainCarousel extends StatefulWidget {
 }
 
 class _MainCarouselState extends State<MainCarousel> {
-  CarouselController carouselController = CarouselController();
+  late CarouselController carouselController;
 
   int _activeIndex = 0;
 
   List<String> images = [
-    'assets/images/carousel-1.png',
-    'assets/images/carousel-2.png',
-    'assets/images/carousel-3.png',
+    'https://i.ibb.co.com/7NCB8Qw/carousel-1.png',
+    'https://i.ibb.co.com/5BkjPdz/carousel-2.png',
+    'https://i.ibb.co.com/YWpkgwf/carousel-3.png',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    carouselController = CarouselController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -31,7 +38,7 @@ class _MainCarouselState extends State<MainCarousel> {
               images.length,
               (index) => InkWell(
                 onTap: () {},
-                child: Image.asset(
+                child: Image.network(
                   images[index],
                   fit: BoxFit.cover,
                 ),

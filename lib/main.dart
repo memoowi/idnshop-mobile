@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:idnshop/src/bloc/onboarding/onboarding_bloc.dart';
+import 'package:idnshop/src/cubit/app_start_cubit.dart';
 import 'package:idnshop/src/routes/app_routes.dart';
 import 'package:idnshop/src/theme/custom_app_bar_theme.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
@@ -22,7 +23,10 @@ void main() {
     MultiBlocProvider(
       providers: [
         BlocProvider<OnboardingBloc>(
-          create: (context) => OnboardingBloc()..add(CheckEvent()),
+          create: (context) => OnboardingBloc(),
+        ),
+        BlocProvider<AppStartCubit>(
+          create: (context) => AppStartCubit()..appStartCheck(),
         ),
       ],
       child: const MyApp(),

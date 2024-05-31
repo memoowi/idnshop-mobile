@@ -23,166 +23,179 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Timer? _exitTimer;
 
   void _startExitTimer() {
-    _exitTimer?.cancel(); // Cancel any existing timer
+    _exitTimer?.cancel();
     _exitTimer = Timer(const Duration(seconds: 3), () {
       setState(() {
-        _backPressCount = 0; // Reset counter
+        _backPressCount = 0;
         _canPop = false;
       });
     });
   }
 
-  final carouselController = CarouselController();
+  late CarouselController carouselController;
+
+  // _OnBoardingScreenState()
+  //     : carouselController = CarouselController(),
+  //       super();
+
+  @override
+  void initState() {
+    super.initState();
+    carouselController = CarouselController();
+  }
 
   @override
   void dispose() {
-    _exitTimer?.cancel(); // Cancel timer on widget disposal
+    _exitTimer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<OnboardingBloc, OnboardingState>(
-      listener: (context, state) {
-        if (state is OnboardingDone) {
-          Navigator.of(context).pushNamedAndRemoveUntil(
-              AppRoutes.home, (Route<dynamic> route) => false);
-        } else if (state is OnboardingGetStarted) {
-          Navigator.of(context).pushNamedAndRemoveUntil(
-              AppRoutes.home, (Route<dynamic> route) => false);
-          Navigator.of(context).pushNamed(AppRoutes.register);
-        }
-      },
-      builder: (context, state) {
-        int currentIndex = 0;
-        if (state is OnboardingPageChanged) {
-          currentIndex = state.currentIndex;
-        }
-        return PopScope(
-          canPop: _canPop,
-          onPopInvoked: (didPop) {
-            if (!didPop) {
-              if (currentIndex != 0) {
-                context.read<OnboardingBloc>().add(PreviousPageEvent());
-                carouselController.previousPage();
-                return;
+    return BlocProvider(
+      create: (context) => OnboardingBloc(),
+      child: BlocConsumer<OnboardingBloc, OnboardingState>(
+        listener: (context, state) {
+          if (state is OnboardingDone) {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                AppRoutes.home, (Route<dynamic> route) => false);
+          } else if (state is OnboardingGetStarted) {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                AppRoutes.home, (Route<dynamic> route) => false);
+            Navigator.of(context).pushNamed(AppRoutes.register);
+          }
+        },
+        builder: (context, state) {
+          int currentIndex = 0;
+          if (state is OnboardingPageChanged) {
+            currentIndex = state.currentIndex;
+          }
+          return PopScope(
+            canPop: _canPop,
+            onPopInvoked: (didPop) {
+              if (!didPop) {
+                if (currentIndex != 0) {
+                  context.read<OnboardingBloc>().add(PreviousPageEvent());
+                  carouselController.previousPage();
+                  return;
+                }
+                if (_backPressCount == 0) {
+                  Fluttertoast.showToast(
+                    msg: "Press back again to exit",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.black54,
+                  );
+                }
+                _startExitTimer();
+                setState(() {
+                  _backPressCount++;
+                  _canPop = true;
+                });
               }
-              if (_backPressCount == 0) {
-                Fluttertoast.showToast(
-                  msg: "Press back again to exit",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.CENTER,
-                  backgroundColor: Colors.black54,
-                );
-              }
-              _startExitTimer();
-              setState(() {
-                _backPressCount++;
-                _canPop = true;
-              });
-            }
-          },
-          child: Scaffold(
-            appBar: appBar(),
-            extendBodyBehindAppBar: true,
-            backgroundColor: CustomColor.primary,
-            body: Column(
-              children: [
-                CarouselSlider(
-                  carouselController: carouselController,
-                  options: CarouselOptions(
-                    initialPage: currentIndex,
-                    viewportFraction: 1.0,
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    scrollDirection: Axis.horizontal,
-                    enableInfiniteScroll: false,
-                    onPageChanged: (index, reason) {
-                      context
-                          .read<OnboardingBloc>()
-                          .add(UpdatePageEvent(index));
-                    },
-                  ),
-                  items: items.map((item) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Image.asset(
-                          item.image,
-                        );
+            },
+            child: Scaffold(
+              appBar: appBar(),
+              extendBodyBehindAppBar: true,
+              backgroundColor: CustomColor.primary,
+              body: Column(
+                children: [
+                  CarouselSlider(
+                    carouselController: carouselController,
+                    options: CarouselOptions(
+                      initialPage: currentIndex,
+                      viewportFraction: 1.0,
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      scrollDirection: Axis.horizontal,
+                      enableInfiniteScroll: false,
+                      onPageChanged: (index, reason) {
+                        context
+                            .read<OnboardingBloc>()
+                            .add(UpdatePageEvent(index));
                       },
-                    );
-                  }).toList(),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
                     ),
-                    child: Column(
-                      children: [
-                        Text(
-                          items[currentIndex].title,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                        const SizedBox(height: 16.0),
-                        Text(
-                          items[currentIndex].description,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        const Spacer(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            AnimatedSmoothIndicator(
-                              activeIndex: currentIndex,
-                              count: items.length,
-                              onDotClicked: (index) {
-                                return carouselController.animateToPage(
-                                  index,
-                                  duration: const Duration(milliseconds: 500),
-                                  curve: Curves.easeInOut,
-                                );
-                              },
-                              effect: JumpingDotEffect(
-                                activeDotColor: CustomColor.primary,
-                                dotColor: CustomColor.border,
-                                dotHeight: 10.0,
-                                dotWidth: 10.0,
-                                verticalOffset: 10.0,
+                    items: items.map((item) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Image.asset(
+                            item.image,
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(30, 50, 30, 30),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            items[currentIndex].title,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                          const SizedBox(height: 16.0),
+                          Text(
+                            items[currentIndex].description,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          const Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              AnimatedSmoothIndicator(
+                                activeIndex: currentIndex,
+                                count: items.length,
+                                onDotClicked: (index) {
+                                  return carouselController.animateToPage(
+                                    index,
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                  );
+                                },
+                                effect: JumpingDotEffect(
+                                  activeDotColor: CustomColor.primary,
+                                  dotColor: CustomColor.border,
+                                  dotHeight: 10.0,
+                                  dotWidth: 10.0,
+                                  verticalOffset: 10.0,
+                                ),
                               ),
-                            ),
-                            FilledButton(
-                              onPressed: () {
-                                if (currentIndex < items.length - 1) {
-                                  context
-                                      .read<OnboardingBloc>()
-                                      .add(NextPageEvent());
-                                  carouselController.nextPage();
-                                } else if (currentIndex == items.length - 1) {
-                                  context
-                                      .read<OnboardingBloc>()
-                                      .add(GetStartedEvent());
-                                }
-                              },
-                              child: Text(
-                                currentIndex == items.length - 1
-                                    ? 'Get Started'
-                                    : 'Next',
+                              FilledButton(
+                                onPressed: () {
+                                  if (currentIndex < items.length - 1) {
+                                    context
+                                        .read<OnboardingBloc>()
+                                        .add(NextPageEvent());
+                                    carouselController.nextPage();
+                                  } else if (currentIndex == items.length - 1) {
+                                    context
+                                        .read<OnboardingBloc>()
+                                        .add(GetStartedEvent());
+                                  }
+                                },
+                                child: Text(
+                                  currentIndex == items.length - 1
+                                      ? 'Get Started'
+                                      : 'Next',
+                                ),
                               ),
-                            ),
-                          ],
-                        )
-                      ],
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 

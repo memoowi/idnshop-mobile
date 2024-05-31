@@ -38,6 +38,7 @@ class ChatPage extends StatelessWidget {
             Lottie.asset(
               'assets/lottie/person-desk.json',
               width: 300,
+              reverse: true,
             ),
             const SizedBox(height: 32),
             Text(

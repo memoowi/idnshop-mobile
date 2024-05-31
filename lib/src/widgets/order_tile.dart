@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/src/theme/custom_color.dart';
 import 'package:idnshop/src/utils/data_formatter.dart';
 import 'package:idnshop/src/utils/svg_data.dart';
+import 'package:idnshop/src/widgets/custom_cached_network_image.dart';
 import 'package:idnshop/src/widgets/custom_order_button.dart';
 
 class OrderTile extends StatelessWidget {
@@ -79,9 +80,10 @@ class OrderTile extends StatelessWidget {
                   decoration: const BoxDecoration(
                     color: CustomColor.accent1,
                   ),
-                  child: Image.network(
-                    order['items'][0]['image'],
+                  child: CustomCachedNetworkImage(
+                    imageUrl: order['items'][0]['image'],
                     fit: BoxFit.cover,
+                    withErrorText: false,
                   ),
                 ),
                 const SizedBox(width: 10),

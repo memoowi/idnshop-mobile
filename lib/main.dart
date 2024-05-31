@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:idnshop/src/bloc/onboarding/onboarding_bloc.dart';
 import 'package:idnshop/src/cubit/app_start_cubit.dart';
 import 'package:idnshop/src/routes/app_routes.dart';
 import 'package:idnshop/src/theme/custom_app_bar_theme.dart';
@@ -22,9 +21,6 @@ void main() {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider<OnboardingBloc>(
-          create: (context) => OnboardingBloc(),
-        ),
         BlocProvider<AppStartCubit>(
           create: (context) => AppStartCubit()..appStartCheck(),
         ),
@@ -42,7 +38,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: Config.appName,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: CustomColor.primary),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: CustomColor.primary,
+          primary: CustomColor.primary,
+          onError: CustomColor.red,
+          outline: CustomColor.border,
+        ),
         appBarTheme: CustomAppBarTheme.defaultTheme,
         scaffoldBackgroundColor: Colors.white,
         fontFamily: CustomTextTheme.baseFontFamily,

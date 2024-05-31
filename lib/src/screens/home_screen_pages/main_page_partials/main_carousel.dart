@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:idnshop/src/widgets/custom_cached_network_image.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class MainCarousel extends StatefulWidget {
@@ -14,11 +15,11 @@ class _MainCarouselState extends State<MainCarousel> {
 
   int _activeIndex = 0;
 
-  List<String> images = [
-    'https://i.ibb.co.com/7NCB8Qw/carousel-1.png',
-    'https://i.ibb.co.com/5BkjPdz/carousel-2.png',
-    'https://i.ibb.co.com/YWpkgwf/carousel-3.png',
-  ];
+  List<String> get images => [
+        'https://i.ibb.co.com/7NCB8Qw/carousel-1.png',
+        'https://i.ibb.co.com/5BkjPdz/carousel-2.png',
+        'https://i.ibb.co.com/YWpkgwf/carousel-3.png',
+      ];
 
   @override
   void initState() {
@@ -38,8 +39,8 @@ class _MainCarouselState extends State<MainCarousel> {
               images.length,
               (index) => InkWell(
                 onTap: () {},
-                child: Image.network(
-                  images[index],
+                child: CustomCachedNetworkImage(
+                  imageUrl: images[index],
                   fit: BoxFit.cover,
                 ),
               ),

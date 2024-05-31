@@ -52,7 +52,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<OnboardingBloc>(
       create: (context) => OnboardingBloc(),
       child: BlocConsumer<OnboardingBloc, OnboardingState>(
         listener: (context, state) {
@@ -95,7 +95,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               }
             },
             child: Scaffold(
-              appBar: appBar(),
+              appBar: AppBar(
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.transparent,
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      context.read<OnboardingBloc>().add(SkipEvent());
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    ),
+                    child: const Text('Skip'),
+                  ),
+                ],
+              ),
               extendBodyBehindAppBar: true,
               backgroundColor: CustomColor.primary,
               body: Column(
@@ -196,25 +212,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           );
         },
       ),
-    );
-  }
-
-  AppBar appBar() {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor: Colors.transparent,
-      actions: [
-        TextButton(
-          onPressed: () {
-            context.read<OnboardingBloc>().add(SkipEvent());
-          },
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.white,
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          ),
-          child: const Text('Skip'),
-        ),
-      ],
     );
   }
 }

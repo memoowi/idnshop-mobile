@@ -8,6 +8,7 @@ import 'package:idnshop/src/utils/svg_data.dart';
 import 'package:idnshop/src/screens/home_screen_pages/main_page_partials/login_reminder.dart';
 import 'package:idnshop/src/screens/home_screen_pages/main_page_partials/main_carousel.dart';
 import 'package:idnshop/src/widgets/footer.dart';
+import 'package:idnshop/src/widgets/plane_indicator.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({
@@ -21,7 +22,7 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         title: SvgPicture.asset(
           SvgData.idnshopDark,
-          colorFilter: ColorFilter.mode(
+          colorFilter: const ColorFilter.mode(
             CustomColor.secondary1,
             BlendMode.srcIn,
           ),
@@ -33,7 +34,7 @@ class MainPage extends StatelessWidget {
             onPressed: () {},
             icon: SvgPicture.asset(
               SvgData.search,
-              colorFilter: ColorFilter.mode(
+              colorFilter: const ColorFilter.mode(
                 CustomColor.secondary1,
                 BlendMode.srcIn,
               ),
@@ -43,25 +44,28 @@ class MainPage extends StatelessWidget {
             onPressed: () {},
             icon: SvgPicture.asset(
               SvgData.bag,
-              colorFilter: ColorFilter.mode(
+              colorFilter: const ColorFilter.mode(
                 CustomColor.secondary1,
                 BlendMode.srcIn,
               ),
             ),
           ),
-          SizedBox(width: 4)
+          const SizedBox(width: 4)
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            LoginReminder(),
-            MainCarousel(),
-            OurCollectionSection(),
-            BestSellingSection(),
-            NewArrivalSection(),
-            Footer()
-          ],
+      body: PlaneIndicator(
+        child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Column(
+            children: [
+              LoginReminder(),
+              MainCarousel(),
+              OurCollectionSection(),
+              BestSellingSection(),
+              NewArrivalSection(),
+              const Footer()
+            ],
+          ),
         ),
       ),
     );

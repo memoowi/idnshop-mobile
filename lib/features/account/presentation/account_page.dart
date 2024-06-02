@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:idnshop/common/widgets/open_cart_button.dart';
 import 'package:idnshop/features/account/presentation/account_page_partials/account_information_section.dart';
 import 'package:idnshop/features/account/presentation/account_page_partials/account_setting_section.dart';
 import 'package:idnshop/features/account/presentation/account_page_partials/profile_image_section.dart';
@@ -17,19 +18,7 @@ class AccountPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Account'),
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              SvgData.bag,
-              colorFilter: const ColorFilter.mode(
-                CustomColor.secondary1,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-          const SizedBox(width: 4)
-        ],
+        actions: const [OpenCartButton(), SizedBox(width: 4)],
       ),
       body: SingleChildScrollView(
         child: Column(

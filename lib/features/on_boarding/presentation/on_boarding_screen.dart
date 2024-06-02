@@ -57,12 +57,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       child: BlocConsumer<OnboardingBloc, OnboardingState>(
         listener: (context, state) {
           if (state is OnboardingDone) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                AppRoutes.home, (Route<dynamic> route) => false);
+            Navigator.of(context).pushReplacementNamed(AppRoutes.home);
           } else if (state is OnboardingGetStarted) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                AppRoutes.home, (Route<dynamic> route) => false);
-            Navigator.of(context).pushNamed(AppRoutes.register);
+            Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+            Navigator.of(context, rootNavigator: true)
+                .pushNamed(AppRoutes.register);
           }
         },
         builder: (context, state) {

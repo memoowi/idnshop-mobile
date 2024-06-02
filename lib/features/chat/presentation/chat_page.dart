@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:idnshop/common/widgets/open_cart_button.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/core/secrets/config.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
@@ -16,19 +17,7 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Chat'),
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              SvgData.bag,
-              colorFilter: ColorFilter.mode(
-                CustomColor.secondary1,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-          SizedBox(width: 4)
-        ],
+        actions: const [OpenCartButton(), SizedBox(width: 4)],
       ),
       body: Container(
         width: double.infinity,
@@ -50,7 +39,7 @@ class ChatPage extends StatelessWidget {
             OutlinedButton(
               onPressed: () {},
               style: OutlinedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
+                minimumSize: const Size(double.infinity, 50),
               ),
               child: const Text('Frequently Asked Questions'),
             ),
@@ -95,10 +84,10 @@ class ChatPage extends StatelessWidget {
                         );
                       }
                     },
-                    label: Text('via WhatsApp'),
+                    label: const Text('via WhatsApp'),
                     icon: SvgPicture.asset(
                       SvgData.whatsapp,
-                      colorFilter: ColorFilter.mode(
+                      colorFilter: const ColorFilter.mode(
                         CustomColor.green,
                         BlendMode.srcIn,
                       ),
@@ -121,10 +110,10 @@ class ChatPage extends StatelessWidget {
                         );
                       }
                     },
-                    label: Text('via Email'),
+                    label: const Text('via Email'),
                     icon: SvgPicture.asset(
                       SvgData.atSign,
-                      colorFilter: ColorFilter.mode(
+                      colorFilter: const ColorFilter.mode(
                         CustomColor.primary,
                         BlendMode.srcIn,
                       ),
@@ -146,7 +135,7 @@ class ChatPage extends StatelessWidget {
                 );
               },
               style: FilledButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
+                minimumSize: const Size(double.infinity, 50),
               ),
               child: const Text('Chat with us'),
             )

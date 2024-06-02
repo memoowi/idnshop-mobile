@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:idnshop/common/widgets/open_cart_button.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
-import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:idnshop/common/widgets/custom_cached_network_image.dart';
 
 class CategoryPage extends StatelessWidget {
@@ -13,19 +12,7 @@ class CategoryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Shop By Category'),
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              SvgData.bag,
-              colorFilter: ColorFilter.mode(
-                CustomColor.secondary1,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-          SizedBox(width: 4)
-        ],
+        actions: const [OpenCartButton(), SizedBox(width: 4)],
       ),
       body: GridView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:idnshop/features/app_start/cubit/app_start_cubit.dart';
 import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/core/theme/custom_app_bar_theme.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
@@ -19,14 +17,7 @@ void main() {
   ]);
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider<AppStartCubit>(
-          create: (context) => AppStartCubit()..appStartCheck(),
-        ),
-      ],
-      child: const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 

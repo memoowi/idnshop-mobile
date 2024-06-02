@@ -84,7 +84,7 @@ class ChatPage extends StatelessWidget {
                         );
                       }
                     },
-                    label: const Text('via WhatsApp'),
+                    label: const Text('WhatsApp'),
                     icon: SvgPicture.asset(
                       SvgData.whatsapp,
                       colorFilter: const ColorFilter.mode(
@@ -110,7 +110,7 @@ class ChatPage extends StatelessWidget {
                         );
                       }
                     },
-                    label: const Text('via Email'),
+                    label: const Text('Email'),
                     icon: SvgPicture.asset(
                       SvgData.atSign,
                       colorFilter: const ColorFilter.mode(

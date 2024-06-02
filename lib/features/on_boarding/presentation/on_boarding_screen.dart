@@ -104,8 +104,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     },
                     style: TextButton.styleFrom(
                       foregroundColor: Colors.white,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
                     ),
                     child: const Text('Skip'),
                   ),
@@ -172,7 +172,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                     curve: Curves.easeInOut,
                                   );
                                 },
-                                effect: JumpingDotEffect(
+                                effect: const JumpingDotEffect(
                                   activeDotColor: CustomColor.primary,
                                   dotColor: CustomColor.border,
                                   dotHeight: 10.0,

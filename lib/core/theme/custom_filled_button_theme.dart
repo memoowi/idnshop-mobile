@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
+import 'package:idnshop/core/theme/custom_text_theme.dart';
 
 class CustomFilledButtonTheme {
   static FilledButtonThemeData get defaultTheme => FilledButtonThemeData(
@@ -12,8 +13,8 @@ class CustomFilledButtonTheme {
             borderRadius: BorderRadius.zero,
           ),
           textStyle: const TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 16,
+            fontFamily: CustomTextTheme.baseFontFamily,
+            fontWeight: FontWeight.w600,
           ),
           minimumSize: const Size(100, 50),
         ),

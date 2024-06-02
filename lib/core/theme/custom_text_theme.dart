@@ -7,43 +7,43 @@ class CustomTextTheme {
   static const String brandFontFamily = 'Squada One';
 
   static TextTheme get defaultTheme => TextTheme(
-        headlineLarge: TextStyle(
+        headlineLarge: const TextStyle(
           fontFamily: headingFontFamily,
           color: CustomColor.secondary1,
           fontWeight: FontWeight.w700, // df:fs 24
         ),
-        headlineMedium: TextStyle(
+        headlineMedium: const TextStyle(
           fontFamily: headingFontFamily,
           color: CustomColor.secondary1,
           fontWeight: FontWeight.w700, // df:fs 16
         ),
-        headlineSmall: TextStyle(
+        headlineSmall: const TextStyle(
           fontFamily: headingFontFamily,
           color: CustomColor.secondary1,
           fontWeight: FontWeight.w700, // df:fs 14
         ),
-        titleLarge: TextStyle(
+        titleLarge: const TextStyle(
           fontFamily: headingFontFamily,
           color: CustomColor.secondary1,
           fontWeight: FontWeight.w700, // df:fs 20
         ),
-        titleMedium: TextStyle(
+        titleMedium: const TextStyle(
           fontFamily: headingFontFamily,
           color: CustomColor.secondary1,
           fontWeight: FontWeight.w700, // df:fs 16
         ),
-        titleSmall: TextStyle(
+        titleSmall: const TextStyle(
           fontFamily: headingFontFamily,
           color: CustomColor.secondary1,
           fontWeight: FontWeight.w700, // df:fs 14
         ),
-        bodyLarge: TextStyle(
+        bodyLarge: const TextStyle(
           color: CustomColor.secondary1, // df:fs 16
         ),
-        bodyMedium: TextStyle(
+        bodyMedium: const TextStyle(
           color: CustomColor.secondary1, // df:fs 14
         ),
-        bodySmall: TextStyle(
+        bodySmall: const TextStyle(
           color: CustomColor.secondary1, // df:fs 12
         ),
         labelLarge: TextStyle(

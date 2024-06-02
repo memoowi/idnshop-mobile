@@ -1,11 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/common/utils/data_formatter.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
+import 'package:idnshop/features/account/presentation/update_profile/update_name_dialog.dart';
 import 'package:idnshop/features/account/widgets/account_info_tile.dart';
 
 class AccountInformationSection extends StatelessWidget {
@@ -54,7 +55,14 @@ class AccountInformationSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           AccountInfoTile(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return UpdateNameDialog();
+                },
+              );
+            },
             leading: 'Name',
             title: 'John Doe',
             icon: CupertinoIcons.chevron_forward,
@@ -85,3 +93,4 @@ class AccountInformationSection extends StatelessWidget {
     );
   }
 }
+

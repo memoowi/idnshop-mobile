@@ -5,6 +5,7 @@ import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/core/theme/custom_app_bar_theme.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/core/theme/custom_filled_button_theme.dart';
+import 'package:idnshop/core/theme/custom_input_decoration_theme.dart';
 import 'package:idnshop/core/theme/custom_outlined_button_theme.dart';
 import 'package:idnshop/core/theme/custom_text_button_theme.dart';
 import 'package:idnshop/core/theme/custom_text_theme.dart';
@@ -39,6 +40,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: CustomTextTheme.baseFontFamily,
         textTheme: CustomTextTheme.defaultTheme,
+        inputDecorationTheme: CustomInputDecorationTheme.defaultTheme,
+        // buttons
         textButtonTheme: CustomTextButtonTheme.defaultTheme,
         filledButtonTheme: CustomFilledButtonTheme.defaultTheme,
         outlinedButtonTheme: CustomOutlinedButtonTheme.defaultTheme,

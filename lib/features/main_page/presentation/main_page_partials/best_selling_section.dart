@@ -109,7 +109,7 @@ class BestSellingSection extends StatelessWidget {
           FilledButton(
             onPressed: () {},
             style: FilledButton.styleFrom(
-              minimumSize: Size(double.infinity, 50),
+              minimumSize: const Size(double.infinity, 50),
             ),
             child: const Text('View All'),
           ),

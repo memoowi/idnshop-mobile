@@ -49,9 +49,9 @@ class LoginReminder extends StatelessWidget {
           FilledButton(
             onPressed: () {},
             style: FilledButton.styleFrom(
-              minimumSize: Size(0, 40),
+              minimumSize: const Size(0, 40),
             ),
-            child: Text('Login'),
+            child: const Text('Login'),
           ),
         ],
       ),

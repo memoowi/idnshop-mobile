@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:idnshop/features/account/presentation/update_profile/edit_profile_picture.dart';
 import 'package:idnshop/features/auth/presentation/register_screen.dart';
 import 'package:idnshop/home_screen/presentation/home_screen.dart';
 import 'package:idnshop/features/auth/presentation/login_screen.dart';
@@ -12,7 +13,8 @@ class AppRoutes {
   static const String home = '/home';
   static const String login = '/login';
   static const String register = '/register';
-  static const String search = '/search';
+
+  static const String editProfilePicture = '/edit-pp';
 
   static String initialRoute = preload;
   // static String initialRoute = onBoarding;
@@ -29,6 +31,8 @@ class AppRoutes {
         return _slideTransition(LoginScreen());
       case register:
         return _slideTransition(RegisterScreen());
+      case editProfilePicture:
+        return _slideTransition(EditProfilePicture());
       default:
         return _fadeTransition(HomeScreen());
     }

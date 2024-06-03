@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/core/theme/custom_app_bar_theme.dart';
@@ -10,6 +11,7 @@ import 'package:idnshop/core/theme/custom_outlined_button_theme.dart';
 import 'package:idnshop/core/theme/custom_text_button_theme.dart';
 import 'package:idnshop/core/theme/custom_text_theme.dart';
 import 'package:idnshop/core/secrets/config.dart';
+import 'package:idnshop/features/account/bloc/profile_pciture_cubit.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +20,14 @@ void main() {
   ]);
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(
-    const MyApp(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<ProfilePictureCubit>(
+          create: (context) => ProfilePictureCubit(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 

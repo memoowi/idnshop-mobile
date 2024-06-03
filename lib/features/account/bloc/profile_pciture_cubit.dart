@@ -1,8 +1,11 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ProfilePictureCubit extends Cubit<XFile?> {
   final ImagePicker _picker = ImagePicker();
@@ -10,6 +13,18 @@ class ProfilePictureCubit extends Cubit<XFile?> {
   ProfilePictureCubit() : super(null);
 
   Future<void> pickImage(ImageSource source) async {
+    final status = await _requestPermission(source);
+    if (status != PermissionStatus.granted) {
+      Fluttertoast.showToast(
+        msg: 'Permission not granted',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.TOP,
+        backgroundColor: Colors.red.withOpacity(0.8),
+      );
+      await openAppSettings();
+      return;
+    }
+
     final XFile? image = await _picker.pickImage(source: source);
     if (image != null) {
       final CroppedFile? croppedFile = await _cropImage(image.path);
@@ -62,5 +77,20 @@ class ProfilePictureCubit extends Cubit<XFile?> {
     );
 
     return croppedFile;
+  }
+
+  Future<PermissionStatus> _requestPermission(ImageSource source) async {
+    if (source == ImageSource.camera) {
+      return await Permission.camera.request();
+    } else {
+      final deviceInfo = await DeviceInfoPlugin().deviceInfo;
+      if (deviceInfo is AndroidDeviceInfo && deviceInfo.version.sdkInt <= 32) {
+        // For Android 12 and below
+        return await Permission.storage.request();
+      }
+
+      // For Android 13 and above
+      return await Permission.photos.request();
+    }
   }
 }

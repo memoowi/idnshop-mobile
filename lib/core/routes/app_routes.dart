@@ -22,9 +22,9 @@ class AppRoutes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case preload:
-        return _fadeTransition(PreloadScreen());
+        return _fadeTransition(const PreloadScreen());
       case onBoarding:
-        return _fadeTransition(OnBoardingScreen());
+        return _fadeTransition(const OnBoardingScreen());
       case home:
         return _fadeTransition(HomeScreen());
       case login:

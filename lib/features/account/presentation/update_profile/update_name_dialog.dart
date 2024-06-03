@@ -54,8 +54,8 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
                 decoration: InputDecoration(
                   hintText: 'Name',
                   hintStyle: Theme.of(context).textTheme.labelLarge,
-                  isDense: true,
                 ),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               const SizedBox(height: 16),
               Row(
@@ -73,7 +73,66 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
                     child: FilledButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          Navigator.pop(context);
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              backgroundColor: Colors.white,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.zero,
+                              ),
+                              title: Text(
+                                'Save changes?',
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              content: RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          'Are you sure you want to change your name to ',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium,
+                                    ),
+                                    TextSpan(
+                                      text: nameController.text.trim(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              actionsAlignment: MainAxisAlignment.center,
+                              actions: [
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: OutlinedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('No'),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 16),
+                                    Expanded(
+                                      child: FilledButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Yes'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
                         }
                       },
                       child: const Text('Save'),

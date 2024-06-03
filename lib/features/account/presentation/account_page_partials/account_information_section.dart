@@ -7,6 +7,7 @@ import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/common/utils/data_formatter.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:idnshop/features/account/presentation/update_profile/update_birth_date_dialog.dart';
+import 'package:idnshop/features/account/widgets/verification_code_alert.dart';
 import 'package:idnshop/features/account/presentation/update_profile/update_name_dialog.dart';
 import 'package:idnshop/features/account/widgets/account_info_tile.dart';
 
@@ -26,7 +27,7 @@ class AccountInformationSection extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 SvgData.user,
-                colorFilter: ColorFilter.mode(
+                colorFilter: const ColorFilter.mode(
                   CustomColor.secondary1,
                   BlendMode.srcIn,
                 ),
@@ -80,7 +81,12 @@ class AccountInformationSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           AccountInfoTile(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => VerificationCodeAlert(),
+              );
+            },
             leading: 'Email',
             title: 'wPqFP@example.com',
             icon: CupertinoIcons.chevron_forward,

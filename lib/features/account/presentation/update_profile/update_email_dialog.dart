@@ -1,33 +1,31 @@
 import 'package:flutter/material.dart';
 
-class UpdateNameDialog extends StatefulWidget {
-  const UpdateNameDialog({
+class UpdateEmailDialog extends StatefulWidget {
+  const UpdateEmailDialog({
     super.key,
   });
 
   @override
-  State<UpdateNameDialog> createState() => _UpdateNameDialogState();
+  State<UpdateEmailDialog> createState() => _UpdateEmailDialogState();
 }
 
-class _UpdateNameDialogState extends State<UpdateNameDialog> {
+class _UpdateEmailDialogState extends State<UpdateEmailDialog> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final nameController = TextEditingController();
+  final emailController = TextEditingController();
 
   String? validator(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter a name';
-    } else if (value.length < 3) {
-      return 'Name must be at least 3 characters';
-    } else if (!value.contains(RegExp(r'^(?=.*[a-zA-Z])[a-zA-Z0-9]+$'))) {
-      return 'Invalid name';
+      return 'Please enter new email';
+    } else if (!value.contains('@') || !value.contains('.')) {
+      return 'Please enter a valid email';
     }
     return null;
   }
 
   @override
   void dispose() {
-    nameController.dispose();
+    emailController.dispose();
     super.dispose();
   }
 
@@ -48,15 +46,21 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Change Account Name',
+                'Change Email Address',
                 style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Make sure your email is active for save and seamless transaction',
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 validator: validator,
-                controller: nameController,
+                controller: emailController,
                 decoration: InputDecoration(
-                  hintText: 'Name',
+                  hintText: 'Enter new email',
                   hintStyle: Theme.of(context).textTheme.labelLarge,
                 ),
                 style: Theme.of(context).textTheme.bodyMedium,
@@ -91,11 +95,11 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
                               content: RichText(
                                 text: TextSpan(
                                   text:
-                                      'Are you sure you want to change your name to ',
+                                      'Are you sure you want to change your email to ',
                                   style: Theme.of(context).textTheme.bodyMedium,
                                   children: [
                                     TextSpan(
-                                      text: nameController.text.trim(),
+                                      text: emailController.text.trim(),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium
@@ -135,7 +139,7 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
                           );
                         }
                       },
-                      child: const Text('Save'),
+                      child: const Text('Submit'),
                     ),
                   ),
                 ],

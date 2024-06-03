@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:idnshop/features/account/widgets/verification_code_dialog.dart';
 
 class VerificationCodeAlert extends StatelessWidget {
+  final String title;
+  final Widget onVerified;
   const VerificationCodeAlert({
     super.key,
+    required this.title,
+    required this.onVerified,
   });
 
   @override
@@ -20,12 +24,12 @@ class VerificationCodeAlert extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Change Email Address',
+              'Change $title',
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 20),
             Text(
-              'To change your account’s email, verification code will be sent to your email.',
+              'To change your account’s ${title.toLowerCase()}, verification code will be sent to your email.',
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
@@ -48,7 +52,10 @@ class VerificationCodeAlert extends StatelessWidget {
                       showDialog(
                         context: context,
                         barrierDismissible: false,
-                        builder: (context) => VerificationCodeDialog(),
+                        builder: (context) => VerificationCodeDialog(
+                          title: title,
+                          onVerified: onVerified,
+                        ),
                       );
                     },
                     child: const Text('Confirm'),

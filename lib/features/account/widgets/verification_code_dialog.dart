@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:idnshop/features/account/presentation/update_profile/update_email_dialog.dart';
 
 class VerificationCodeDialog extends StatefulWidget {
+  final String title;
+  final Widget onVerified;
   const VerificationCodeDialog({
     super.key,
+    required this.title,
+    required this.onVerified,
   });
 
   @override
@@ -77,7 +80,7 @@ class _VerificationCodeDialogState extends State<VerificationCodeDialog> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Change Email',
+                'Change ${widget.title}',
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: 16),
@@ -153,7 +156,7 @@ class _VerificationCodeDialogState extends State<VerificationCodeDialog> {
                           showDialog(
                             context: context,
                             barrierDismissible: false,
-                            builder: (context) => UpdateEmailDialog(),
+                            builder: (context) => widget.onVerified,
                           );
                         }
                       },

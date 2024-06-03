@@ -7,6 +7,8 @@ import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/common/utils/data_formatter.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:idnshop/features/account/presentation/update_profile/update_birth_date_dialog.dart';
+import 'package:idnshop/features/account/presentation/update_profile/update_email_dialog.dart';
+import 'package:idnshop/features/account/presentation/update_profile/update_phone_dialog.dart';
 import 'package:idnshop/features/account/widgets/verification_code_alert.dart';
 import 'package:idnshop/features/account/presentation/update_profile/update_name_dialog.dart';
 import 'package:idnshop/features/account/widgets/account_info_tile.dart';
@@ -84,7 +86,10 @@ class AccountInformationSection extends StatelessWidget {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => VerificationCodeAlert(),
+                builder: (context) => VerificationCodeAlert(
+                  title: 'Email Address',
+                  onVerified: UpdateEmailDialog(),
+                ),
               );
             },
             leading: 'Email',
@@ -93,7 +98,15 @@ class AccountInformationSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           AccountInfoTile(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => VerificationCodeAlert(
+                  title: 'Phone Number',
+                  onVerified: UpdatePhoneDialog(),
+                ),
+              );
+            },
             leading: 'Phone',
             title: '+6281234567890',
             icon: CupertinoIcons.chevron_forward,

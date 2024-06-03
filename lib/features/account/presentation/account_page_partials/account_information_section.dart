@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/common/utils/data_formatter.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
+import 'package:idnshop/features/account/presentation/update_profile/update_birth_date_dialog.dart';
 import 'package:idnshop/features/account/presentation/update_profile/update_name_dialog.dart';
 import 'package:idnshop/features/account/widgets/account_info_tile.dart';
 
@@ -58,9 +59,7 @@ class AccountInformationSection extends StatelessWidget {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) {
-                  return UpdateNameDialog();
-                },
+                builder: (context) => UpdateNameDialog(),
               );
             },
             leading: 'Name',
@@ -69,7 +68,12 @@ class AccountInformationSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           AccountInfoTile(
-            onTap: () {},
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) => UpdateBirthDateDialog(),
+              );
+            },
             leading: 'Birth Date',
             title: DataFormatter.ddMMMMyyyy(DateTime.now()),
             icon: CupertinoIcons.chevron_forward,
@@ -93,4 +97,3 @@ class AccountInformationSection extends StatelessWidget {
     );
   }
 }
-

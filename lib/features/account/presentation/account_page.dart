@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/common/widgets/open_cart_button.dart';
+import 'package:idnshop/core/theme/lottie_data.dart';
 import 'package:idnshop/features/account/presentation/account_page_partials/account_information_section.dart';
 import 'package:idnshop/features/account/presentation/account_page_partials/account_setting_section.dart';
 import 'package:idnshop/features/account/presentation/account_page_partials/profile_image_section.dart';
@@ -53,7 +54,7 @@ class AccountPage extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             Lottie.asset(
-              'assets/lottie/custom-footer.json',
+              LottieData.customFooterAnimation,
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class UpdatePhoneDialog extends StatefulWidget {
   const UpdatePhoneDialog({
@@ -65,6 +66,9 @@ class _UpdatePhoneDialogState extends State<UpdatePhoneDialog> {
                   hintStyle: Theme.of(context).textTheme.labelLarge,
                 ),
                 style: Theme.of(context).textTheme.bodyMedium,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
               ),
               const SizedBox(height: 16),
               Row(

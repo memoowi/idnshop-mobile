@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idnshop/core/theme/lottie_data.dart';
 import 'package:lottie/lottie.dart';
 
 class NoOrdersFound extends StatelessWidget {
@@ -15,7 +16,7 @@ class NoOrdersFound extends StatelessWidget {
         children: [
           const SizedBox(height: 24),
           Lottie.asset(
-            'assets/lottie/file-not-found.json',
+            LottieData.fileNotFound,
             width: 300,
           ),
           const SizedBox(height: 24),

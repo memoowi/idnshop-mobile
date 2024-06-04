@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idnshop/common/widgets/open_cart_button.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/core/secrets/config.dart';
+import 'package:idnshop/core/theme/lottie_data.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -25,7 +26,7 @@ class ChatPage extends StatelessWidget {
         child: Column(
           children: [
             Lottie.asset(
-              'assets/lottie/person-desk.json',
+              LottieData.personDesk,
               width: 300,
               reverse: true,
             ),

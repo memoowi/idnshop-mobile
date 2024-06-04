@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:idnshop/features/account/presentation/update_profile/edit_profile_picture.dart';
+import 'package:idnshop/features/account/presentation/update_profile/edit_profile_picture_screen.dart';
 import 'package:idnshop/features/auth/presentation/register_screen.dart';
 import 'package:idnshop/home_screen/presentation/home_screen.dart';
 import 'package:idnshop/features/auth/presentation/login_screen.dart';
@@ -32,7 +32,7 @@ class AppRoutes {
       case register:
         return _slideTransition(RegisterScreen());
       case editProfilePicture:
-        return _slideTransition(EditProfilePicture());
+        return _slideTransition(EditProfilePictureScreen());
       default:
         return _fadeTransition(HomeScreen());
     }

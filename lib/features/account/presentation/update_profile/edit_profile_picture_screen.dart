@@ -7,8 +7,8 @@ import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/features/account/bloc/profile_pciture_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 
-class EditProfilePicture extends StatelessWidget {
-  const EditProfilePicture({super.key});
+class EditProfilePictureScreen extends StatelessWidget {
+  const EditProfilePictureScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

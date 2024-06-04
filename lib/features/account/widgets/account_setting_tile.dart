@@ -23,7 +23,7 @@ class AccountSettingTile extends StatelessWidget {
       leading: SvgPicture.asset(
         svgData,
         colorFilter: ColorFilter.mode(
-          CustomColor.secondary2,
+          CustomColor.primary,
           BlendMode.srcIn,
         ),
         width: 24,

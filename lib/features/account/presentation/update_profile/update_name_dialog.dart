@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class UpdateNameDialog extends StatefulWidget {
   const UpdateNameDialog({
@@ -19,7 +20,7 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
       return 'Please enter a name';
     } else if (value.length < 3) {
       return 'Name must be at least 3 characters';
-    } else if (!value.contains(RegExp(r'^(?=.*[a-zA-Z])[a-zA-Z0-9]+$'))) {
+    } else if (!value.contains(RegExp(r'^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$'))) {
       return 'Invalid name';
     }
     return null;
@@ -55,6 +56,7 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
               TextFormField(
                 validator: validator,
                 controller: nameController,
+                keyboardType: TextInputType.name,
                 decoration: InputDecoration(
                   hintText: 'Name',
                   hintStyle: Theme.of(context).textTheme.labelLarge,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class UpdateEmailDialog extends StatefulWidget {
   const UpdateEmailDialog({
@@ -59,11 +60,15 @@ class _UpdateEmailDialogState extends State<UpdateEmailDialog> {
               TextFormField(
                 validator: validator,
                 controller: emailController,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: 'Enter new email',
                   hintStyle: Theme.of(context).textTheme.labelLarge,
                 ),
                 style: Theme.of(context).textTheme.bodyMedium,
+                inputFormatters: [
+                  FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                ],
               ),
               const SizedBox(height: 16),
               Row(

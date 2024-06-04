@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class VerificationCodeDialog extends StatefulWidget {
   final String title;
@@ -17,12 +18,13 @@ class VerificationCodeDialog extends StatefulWidget {
 class _VerificationCodeDialogState extends State<VerificationCodeDialog> {
   final formKey = GlobalKey<FormState>();
   final codeController = TextEditingController();
+  final maxLength = 6;
 
   String? validator(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter a code';
-    } else if (value.length < 6) {
-      return 'Code must be at least 6 characters';
+    } else if (value.length != maxLength) {
+      return 'Code must be $maxLength digits';
     }
     return null;
   }
@@ -98,6 +100,10 @@ class _VerificationCodeDialogState extends State<VerificationCodeDialog> {
                   hintStyle: Theme.of(context).textTheme.labelLarge,
                 ),
                 style: Theme.of(context).textTheme.bodyMedium,
+                maxLength: maxLength,
+                inputFormatters: [
+                  FilteringTextInputFormatter.deny(RegExp(r'\s')),
+                ],
               ),
               const SizedBox(height: 16),
               _counter == 0

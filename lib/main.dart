@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:idnshop/src/cubit/app_start_cubit.dart';
-import 'package:idnshop/src/routes/app_routes.dart';
-import 'package:idnshop/src/theme/custom_app_bar_theme.dart';
-import 'package:idnshop/src/theme/custom_color.dart';
-import 'package:idnshop/src/theme/custom_filled_button_theme.dart';
-import 'package:idnshop/src/theme/custom_outlined_button_theme.dart';
-import 'package:idnshop/src/theme/custom_text_button_theme.dart';
-import 'package:idnshop/src/theme/custom_text_theme.dart';
-import 'package:idnshop/src/utils/config.dart';
+import 'package:idnshop/core/routes/app_routes.dart';
+import 'package:idnshop/core/theme/custom_app_bar_theme.dart';
+import 'package:idnshop/core/theme/custom_color.dart';
+import 'package:idnshop/core/theme/custom_filled_button_theme.dart';
+import 'package:idnshop/core/theme/custom_input_decoration_theme.dart';
+import 'package:idnshop/core/theme/custom_outlined_button_theme.dart';
+import 'package:idnshop/core/theme/custom_text_button_theme.dart';
+import 'package:idnshop/core/theme/custom_text_theme.dart';
+import 'package:idnshop/core/secrets/config.dart';
+import 'package:idnshop/features/account/bloc/profile_pciture_cubit.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -21,8 +22,8 @@ void main() {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider<AppStartCubit>(
-          create: (context) => AppStartCubit()..appStartCheck(),
+        BlocProvider<ProfilePictureCubit>(
+          create: (context) => ProfilePictureCubit(),
         ),
       ],
       child: const MyApp(),
@@ -48,6 +49,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: CustomTextTheme.baseFontFamily,
         textTheme: CustomTextTheme.defaultTheme,
+        inputDecorationTheme: CustomInputDecorationTheme.defaultTheme,
+        // buttons
         textButtonTheme: CustomTextButtonTheme.defaultTheme,
         filledButtonTheme: CustomFilledButtonTheme.defaultTheme,
         outlinedButtonTheme: CustomOutlinedButtonTheme.defaultTheme,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:idnshop/features/account/widgets/account_setting_tile.dart';
@@ -43,7 +44,9 @@ class AccountSettingSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           AccountSettingTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRoutes.changePassword);
+            },
             svgData: SvgData.lock2,
             title: 'Change Password',
             subtitle: 'Edit your password',

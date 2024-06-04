@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:idnshop/features/account/presentation/update_profile/change_password_screen.dart';
 import 'package:idnshop/features/account/presentation/update_profile/edit_profile_picture_screen.dart';
 import 'package:idnshop/features/auth/presentation/register_screen.dart';
 import 'package:idnshop/features/faq/presentation/faq_screen.dart';
@@ -17,6 +18,7 @@ class AppRoutes {
 
   // route on account page
   static const String editProfilePicture = '/edit-pp';
+  static const String changePassword = '/change-password';
   static const String faq = '/faq';
 
   static String initialRoute = preload;
@@ -35,6 +37,8 @@ class AppRoutes {
         return _slideTransition(RegisterScreen(), 1.0, 0.0);
       case editProfilePicture:
         return _slideTransition(EditProfilePictureScreen(), 0.0, -1.0);
+      case changePassword:
+        return _slideTransition(ChangePasswordScreen(), 1.0, 0.0);
       case faq:
         return _slideTransition(FAQScreen(), 0.0, 1.0);
       default:

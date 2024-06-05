@@ -11,11 +11,13 @@ class BottomNavigationItemData {
   final String icon;
   final String activeIcon;
   final String label;
+  // final String routeName;
   const BottomNavigationItemData({
     required this.screen,
     required this.icon,
     required this.activeIcon,
     required this.label,
+    // required this.routeName,
   });
 
   static List<BottomNavigationItemData> get items => [
@@ -24,30 +26,35 @@ class BottomNavigationItemData {
           icon: SvgData.home,
           activeIcon: SvgData.homeFill,
           label: "Home",
+          // routeName: "/home-main",
         ),
         BottomNavigationItemData(
           screen: CategoryPage(),
           icon: SvgData.widget2Linear,
           activeIcon: SvgData.widget2Filled,
           label: "Category",
+          // routeName: "/home-category",
         ),
         BottomNavigationItemData(
           screen: OrderPage(),
           icon: SvgData.billListLinear,
           activeIcon: SvgData.billListFilled,
           label: "Order",
+          // routeName: "/home-order",
         ),
         BottomNavigationItemData(
           screen: ChatPage(),
           icon: SvgData.chat,
           activeIcon: SvgData.chatFill,
           label: "Chat",
+          // routeName: "/home-chat",
         ),
         BottomNavigationItemData(
           screen: AccountPage(),
           icon: SvgData.user,
           activeIcon: SvgData.userFill,
           label: "Account",
+          // routeName: "/home-account",
         ),
       ];
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:idnshop/features/account/presentation/privacy_setting_screen.dart';
 import 'package:idnshop/features/account/presentation/update_profile/change_password_screen.dart';
 import 'package:idnshop/features/account/presentation/update_profile/edit_profile_picture_screen.dart';
 import 'package:idnshop/features/auth/presentation/register_screen.dart';
@@ -12,7 +13,7 @@ import 'package:idnshop/features/app_start/presentation/preload_screen.dart';
 class AppRoutes {
   static const String preload = '/prelaod';
   static const String onBoarding = '/on-boarding';
-  static const String home = '/home';
+  static const String home = '/';
   static const String login = '/login';
   static const String register = '/register';
 
@@ -20,34 +21,41 @@ class AppRoutes {
   static const String editProfilePicture = '/edit-pp';
   static const String changePassword = '/change-password';
   static const String faq = '/faq';
+  static const String privacySetting = '/privacy-setting';
 
   static String initialRoute = preload;
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case preload:
-        return _fadeTransition(const PreloadScreen());
+        return _fadeTransition(const PreloadScreen(), preload);
       case onBoarding:
-        return _fadeTransition(const OnBoardingScreen());
+        return _fadeTransition(const OnBoardingScreen(), onBoarding);
       case home:
-        return _fadeTransition(HomeScreen());
+        return _fadeTransition(HomeScreen(), home);
       case login:
-        return _slideTransition(LoginScreen(), 1.0, 0.0);
+        return _slideTransition(LoginScreen(), login, 1.0, 0.0);
       case register:
-        return _slideTransition(RegisterScreen(), 1.0, 0.0);
+        return _slideTransition(RegisterScreen(), register, 1.0, 0.0);
       case editProfilePicture:
-        return _slideTransition(EditProfilePictureScreen(), 0.0, -1.0);
+        return _slideTransition(
+            EditProfilePictureScreen(), editProfilePicture, 0.0, -1.0);
       case changePassword:
-        return _slideTransition(ChangePasswordScreen(), 1.0, 0.0);
+        return _slideTransition(
+            ChangePasswordScreen(), changePassword, 1.0, 0.0);
       case faq:
-        return _slideTransition(FAQScreen(), 0.0, 1.0);
+        return _slideTransition(FAQScreen(), faq, 0.0, 1.0);
+      case privacySetting:
+        return _slideTransition(
+            PrivacySettingScreen(), privacySetting, 1.0, 0.0);
       default:
-        return _fadeTransition(HomeScreen());
+        return _fadeTransition(HomeScreen(), home);
     }
   }
 
-  static PageRouteBuilder _fadeTransition(Widget page) {
+  static PageRouteBuilder _fadeTransition(Widget page, String name) {
     return PageRouteBuilder(
+      settings: RouteSettings(name: name),
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return FadeTransition(
@@ -58,8 +66,10 @@ class AppRoutes {
     );
   }
 
-  static PageRouteBuilder _slideTransition(Widget page, double dx, double dy) {
+  static PageRouteBuilder _slideTransition(
+      Widget page, String name, double dx, double dy) {
     return PageRouteBuilder(
+      settings: RouteSettings(name: name),
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         final begin = Offset(dx, dy);

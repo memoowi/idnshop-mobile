@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idnshop/common/utils/no_leading_spaces_formatter.dart';
 import 'package:idnshop/common/utils/validate_new_password.dart';
 import 'package:idnshop/common/widgets/password_form_field.dart';
+import 'package:idnshop/core/theme/custom_color.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -60,12 +62,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     return null;
   }
 
-  void onSubmit() {
-    if (formKey.currentState!.validate()) {
-      // TODO: Implement password change
-    }
-  }
-
   @override
   void dispose() {
     oldPasswordController.dispose();
@@ -114,7 +110,59 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               const SizedBox(height: 32.0),
               const Spacer(),
               FilledButton(
-                onPressed: onSubmit,
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        backgroundColor: Colors.white,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                        ),
+                        title: Text(
+                          'Save changes?',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        content: Text(
+                          'Changing password will force logout your account across all of your devices',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                        actionsAlignment: MainAxisAlignment.center,
+                        actions: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: OutlinedButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('No'),
+                                ),
+                              ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                child: FilledButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    formKey.currentState!.reset();
+                                    Fluttertoast.showToast(
+                                      msg: 'Successfully changed password',
+                                      gravity: ToastGravity.TOP,
+                                      backgroundColor: CustomColor.green,
+                                      textColor: Colors.white,
+                                      toastLength: Toast.LENGTH_SHORT,
+                                    );
+                                  },
+                                  child: const Text('Yes'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                },
                 style: FilledButton.styleFrom(
                   minimumSize: const Size(double.infinity, 50),
                 ),

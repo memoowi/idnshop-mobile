@@ -53,7 +53,9 @@ class AccountSettingSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           AccountSettingTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(AppRoutes.privacySetting);
+            },
             svgData: SvgData.global,
             title: 'Privacy Settings',
             subtitle: 'Edit your address for shipping info',

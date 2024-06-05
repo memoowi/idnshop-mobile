@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:idnshop/core/routes/app_routes.dart';
+import 'package:idnshop/core/routes/route_observer.dart';
 import 'package:idnshop/core/theme/custom_app_bar_theme.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/core/theme/custom_filled_button_theme.dart';
@@ -34,6 +35,8 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  static final RouteObserverService routeObserver = RouteObserverService();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,6 +62,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: Config.debug,
       initialRoute: AppRoutes.initialRoute,
       onGenerateRoute: AppRoutes.onGenerateRoute,
+      navigatorObservers: [routeObserver],
     );
   }
 }

@@ -29,6 +29,9 @@ class PasswordFormField extends StatelessWidget {
       validator: validator,
       controller: controller,
       keyboardType: TextInputType.visiblePassword,
+      textInputAction: TextInputAction.done,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      autofillHints: const [AutofillHints.password],
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: Theme.of(context).textTheme.labelLarge,

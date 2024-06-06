@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:idnshop/common/utils/no_leading_spaces_formatter.dart';
 
 class UpdateNameDialog extends StatefulWidget {
   const UpdateNameDialog({
@@ -62,6 +63,9 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
                   hintStyle: Theme.of(context).textTheme.labelLarge,
                 ),
                 style: Theme.of(context).textTheme.bodyMedium,
+                inputFormatters: [
+                  NoLeadingSpacesFormatter(),
+                ],
               ),
               const SizedBox(height: 16),
               Row(

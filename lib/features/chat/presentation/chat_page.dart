@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:idnshop/common/widgets/open_cart_button.dart';
+import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/core/secrets/config.dart';
 import 'package:idnshop/core/theme/lottie_data.dart';
@@ -38,7 +39,10 @@ class ChatPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context, rootNavigator: true)
+                    .pushNamed(AppRoutes.faq);
+              },
               style: OutlinedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
               ),

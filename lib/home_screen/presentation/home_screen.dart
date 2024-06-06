@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
                 title: item.label,
                 svgIconInactive: item.icon,
                 svgIconActive: item.activeIcon,
+                // routeName: item.routeName,
               ))
           .toList(),
       navBarHeight: 64,
@@ -40,9 +41,13 @@ class HomeScreen extends StatelessWidget {
     required String title,
     required String svgIconInactive,
     required String svgIconActive,
+    // required String routeName,
   }) {
     return PersistentTabConfig(
       screen: screen,
+      navigatorConfig: NavigatorConfig(
+        initialRoute: "/",
+      ),
       item: ItemConfig(
         icon: SvgPicture.asset(
           svgIconActive,

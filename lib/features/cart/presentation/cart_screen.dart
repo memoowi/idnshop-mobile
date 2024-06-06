@@ -18,6 +18,7 @@ class CartScreen extends StatelessWidget {
         children: [
           Expanded(
             child: SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
               clipBehavior: Clip.none,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),

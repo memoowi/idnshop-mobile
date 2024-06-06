@@ -5,9 +5,10 @@ import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/common/utils/data_formatter.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:idnshop/common/widgets/custom_cached_network_image.dart';
+import 'package:idnshop/features/main_page/data/product_data.dart';
 
 class ProductCard extends StatelessWidget {
-  final Map<String, dynamic> product;
+  final ProductData product;
   final Function()? onTap;
   final bool showStars;
   final bool showBorder;
@@ -41,7 +42,7 @@ class ProductCard extends StatelessWidget {
               child: Container(
                 color: CustomColor.accent1,
                 child: CustomCachedNetworkImage(
-                  imageUrl: product['image'],
+                  imageUrl: product.imageUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -52,7 +53,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product['title'],
+                    product.title,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.w700,
                         ),
@@ -61,7 +62,7 @@ class ProductCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    DataFormatter.formatCurrency(product['price']),
+                    DataFormatter.formatCurrency(product.price),
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: CustomColor.primary,
                           fontWeight: FontWeight.w700,
@@ -73,7 +74,7 @@ class ProductCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             RatingBarIndicator(
-                              rating: product['rating'],
+                              rating: product.rating,
                               itemBuilder: (context, index) => SvgPicture.asset(
                                 SvgData.starFill,
                                 colorFilter: ColorFilter.mode(
@@ -91,7 +92,7 @@ class ProductCard extends StatelessWidget {
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              '(${product['sold']} sold)',
+                              '(${product.sold} sold)',
                               style: Theme.of(context).textTheme.bodyMedium,
                             )
                           ],

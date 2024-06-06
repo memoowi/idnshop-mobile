@@ -14,8 +14,8 @@ class AppRoutes {
   static const String privacySetting = '/privacy-setting';
   static const String address = '/address';
 
-  // route cart
   static const String cart = '/cart';
+  static const String search = '/search';
 
   static String initialRoute = preload;
 
@@ -46,6 +46,8 @@ class AppRoutes {
         return _slideTransition(AddressScreen(), home, 1.0, 0.0);
       case cart:
         return _fadeTransition(CartScreen(), cart);
+      case search:
+        return _fadeTransition(SearchScreen(), search);
       default:
         return _fadeTransition(HomeScreen(), home);
     }

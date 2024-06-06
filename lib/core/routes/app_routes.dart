@@ -7,6 +7,7 @@ import 'package:idnshop/features/address/presentation/address_screen.dart';
 import 'package:idnshop/features/auth/presentation/register_screen.dart';
 import 'package:idnshop/features/cart/presentation/cart_screen.dart';
 import 'package:idnshop/features/faq/presentation/faq_screen.dart';
+import 'package:idnshop/features/search/presentation/search_screen.dart';
 import 'package:idnshop/home_screen/presentation/home_screen.dart';
 import 'package:idnshop/features/auth/presentation/login_screen.dart';
 import 'package:idnshop/features/on_boarding/presentation/on_boarding_screen.dart';

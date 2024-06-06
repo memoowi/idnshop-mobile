@@ -29,7 +29,7 @@ class CartTile extends StatelessWidget {
           Container(
             width: 80,
             height: 80,
-            color: Colors.grey,
+            color: CustomColor.accent1,
             child: CustomCachedNetworkImage(
               imageUrl: 'https://i.ibb.co.com/cxX73Rf/umbrella.png',
               fit: BoxFit.contain,
@@ -76,9 +76,9 @@ class CartTile extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 8,
-                      backgroundColor: CustomColor.red,
+                      backgroundColor: CustomColor.orange,
                     ),
-                    const SizedBox(width: 4),
+                    const SizedBox(width: 8),
                     Expanded(
                       child: Text(
                         'Color Name'.toUpperCase(),

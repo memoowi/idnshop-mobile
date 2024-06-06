@@ -3,56 +3,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:idnshop/common/widgets/product_card.dart';
+import 'package:idnshop/features/main_page/data/product_data.dart';
 
 class NewArrivalSection extends StatelessWidget {
-  const NewArrivalSection({
+  NewArrivalSection({
     super.key,
   });
 
-  List<Map<String, dynamic>> get newArrivalProducts => [
-        {
-          'image': 'https://i.ibb.co.com/8zzc9M0/sweater.png',
-          'title': 'Sweater',
-          'rating': 4.5,
-          'price': 50000,
-          'sold': 3
-        },
-        {
-          'image': 'https://i.ibb.co.com/3SpLWds/cap.png',
-          'title': 'BaseballBaseball Love Cap',
-          'rating': 5.0,
-          'price': 25000,
-          'sold': 1
-        },
-        {
-          'image': 'https://i.ibb.co.com/VCYgdN1/shirt.png',
-          'title': 'Shirt',
-          'rating': 4.0,
-          'price': 35000,
-          'sold': 2
-        },
-        {
-          'image': 'https://i.ibb.co.com/9gGdTjc/pants.png',
-          'title': 'Pants',
-          'rating': 3.0,
-          'price': 60000,
-          'sold': 4
-        },
-        {
-          'image': 'https://i.ibb.co.com/xXY8VYv/shoes.png',
-          'title': 'Shoes',
-          'rating': 4.5,
-          'price': 240000,
-          'sold': 5
-        },
-        {
-          'image': 'https://i.ibb.co.com/X4FyjqG/backpak.png',
-          'title': 'Backpack',
-          'rating': 4.8,
-          'price': 450000,
-          'sold': 6
-        },
-      ];
+  final data = ProductData.products;
 
   @override
   Widget build(BuildContext context) {
@@ -93,11 +51,11 @@ class NewArrivalSection extends StatelessWidget {
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
             ),
-            itemCount: newArrivalProducts.length,
+            itemCount: data.length,
             itemBuilder: (context, index) {
               return ProductCard(
                 onTap: () {},
-                product: newArrivalProducts[index],
+                product: data[index],
               );
             },
           ),

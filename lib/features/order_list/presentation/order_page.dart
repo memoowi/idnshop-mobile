@@ -17,6 +17,7 @@ class OrderPage extends StatelessWidget {
         actions: const [OpenCartButton(), SizedBox(width: 4)],
       ),
       body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         child: Column(
           children: [
             StatusFilter(),

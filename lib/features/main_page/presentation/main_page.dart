@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:idnshop/common/widgets/open_cart_button.dart';
+import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/features/main_page/presentation/main_page_partials/best_selling_section.dart';
 import 'package:idnshop/features/main_page/presentation/main_page_partials/new_arrival_section.dart';
 import 'package:idnshop/features/main_page/presentation/main_page_partials/our_collection_section.dart';
@@ -32,7 +33,9 @@ class MainPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.search);
+            },
             icon: SvgPicture.asset(
               SvgData.search,
               colorFilter: const ColorFilter.mode(

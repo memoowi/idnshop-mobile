@@ -21,7 +21,7 @@ class AccountSettingSection extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 SvgData.setting,
-                colorFilter: ColorFilter.mode(
+                colorFilter: const ColorFilter.mode(
                   CustomColor.secondary1,
                   BlendMode.srcIn,
                 ),

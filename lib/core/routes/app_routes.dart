@@ -5,6 +5,7 @@ import 'package:idnshop/features/account/presentation/update_profile/change_pass
 import 'package:idnshop/features/account/presentation/update_profile/edit_profile_picture_screen.dart';
 import 'package:idnshop/features/address/presentation/address_screen.dart';
 import 'package:idnshop/features/auth/presentation/register_screen.dart';
+import 'package:idnshop/features/cart/presentation/cart_screen.dart';
 import 'package:idnshop/features/faq/presentation/faq_screen.dart';
 import 'package:idnshop/home_screen/presentation/home_screen.dart';
 import 'package:idnshop/features/auth/presentation/login_screen.dart';

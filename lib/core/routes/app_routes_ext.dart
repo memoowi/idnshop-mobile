@@ -14,6 +14,9 @@ class AppRoutes {
   static const String privacySetting = '/privacy-setting';
   static const String address = '/address';
 
+  // route cart
+  static const String cart = '/cart';
+
   static String initialRoute = preload;
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -41,6 +44,8 @@ class AppRoutes {
             PrivacySettingScreen(), privacySetting, 1.0, 0.0);
       case address:
         return _slideTransition(AddressScreen(), home, 1.0, 0.0);
+      case cart:
+        return _fadeTransition(CartScreen(), cart);
       default:
         return _fadeTransition(HomeScreen(), home);
     }

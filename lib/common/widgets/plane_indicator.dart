@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:idnshop/core/theme/custom_color.dart';
 
 class _Cloud {
-  static const _light = Color(0xFF96CDDE);
-  static const _dark = Color(0xFF6AABBF);
-  static const _normal = Color(0xFFACCFDA);
+  static const _light = CustomColor.accent1;
+  static const _dark = CustomColor.accent2;
+  static const _normal = CustomColor.primary;
 
   static const _assets = [
     "assets/plane_indicator/cloud1.png",
@@ -246,10 +247,10 @@ class _PlaneIndicatorState extends State<PlaneIndicator>
                                 /// plane
                                 Center(
                                   child: OverflowBox(
-                                    maxWidth: 172,
-                                    minWidth: 172,
-                                    maxHeight: 50,
-                                    minHeight: 50,
+                                    maxWidth: 100,
+                                    minWidth: 100,
+                                    maxHeight: 200,
+                                    minHeight: 200,
                                     alignment: Alignment.center,
                                     child: plane,
                                   ),

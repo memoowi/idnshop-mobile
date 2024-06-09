@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
 
 class LoginReminder extends StatelessWidget {
@@ -47,7 +48,10 @@ class LoginReminder extends StatelessWidget {
           ),
           const Spacer(),
           FilledButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true)
+                  .pushNamed(AppRoutes.login);
+            },
             style: FilledButton.styleFrom(
               minimumSize: const Size(0, 40),
             ),

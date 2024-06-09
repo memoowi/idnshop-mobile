@@ -14,109 +14,106 @@ class CartScreen extends StatelessWidget {
         title: const Text('Cart'),
       ),
       // body: EmptyCart(),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              clipBehavior: Clip.none,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    CheckboxListTile(
-                      value: true,
-                      onChanged: (value) {},
-                      controlAffinity: ListTileControlAffinity.leading,
-                      activeColor: CustomColor.primary,
-                      shape: Border.all(
-                        color: CustomColor.border,
-                      ),
-                      visualDensity: VisualDensity.compact,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16),
-                      title: Text(
-                        'Select All (5)',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(fontWeight: FontWeight.w600),
-                      ),
-                      secondary: TextButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return DeleteCartDialog();
-                            },
-                          );
-                        },
-                        child: Text(
-                          'Delete',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium
-                              ?.copyWith(fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    CartTile(),
-                    const SizedBox(height: 8),
-                    CartTile(),
-                    const SizedBox(height: 8),
-                    CartTile(),
-                  ],
+      body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        clipBehavior: Clip.none,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              CheckboxListTile(
+                value: true,
+                onChanged: (value) {},
+                controlAffinity: ListTileControlAffinity.leading,
+                activeColor: CustomColor.primary,
+                shape: Border.all(
+                  color: CustomColor.border,
+                ),
+                visualDensity: VisualDensity.compact,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                title: Text(
+                  'Select All (5)',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w600),
+                ),
+                secondary: TextButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return DeleteCartDialog();
+                      },
+                    );
+                  },
+                  child: Text(
+                    'Delete',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                        ?.copyWith(fontWeight: FontWeight.w700),
+                  ),
                 ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              padding: const EdgeInsets.all(16.0),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: CustomColor.border,
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                  ),
-                ],
+              const SizedBox(height: 10),
+              ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 10),
+                itemCount: 3,
+                itemBuilder: (context, index) => const CartTile(),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: CustomColor.border,
+                spreadRadius: 5,
+                blurRadius: 7,
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Subtotal (2 items)',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
-                            ?.copyWith(fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        DataFormatter.formatCurrency(100000),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(fontWeight: FontWeight.w700),
-                      ),
-                    ],
+                  Text(
+                    'Subtotal (2 items)',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall
+                        ?.copyWith(fontWeight: FontWeight.w600),
                   ),
-                  const SizedBox(width: 16),
-                  FilledButton(
-                    onPressed: () {},
-                    child: const Text('Checkout'),
+                  Text(
+                    DataFormatter.formatCurrency(100000),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge
+                        ?.copyWith(fontWeight: FontWeight.w700),
                   ),
                 ],
               ),
-            ),
+              const SizedBox(width: 16),
+              FilledButton(
+                onPressed: () {},
+                child: const Text('Checkout'),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

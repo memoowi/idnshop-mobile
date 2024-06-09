@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:idnshop/common/widgets/product_card.dart';
@@ -56,7 +57,10 @@ class BestSellingSection extends StatelessWidget {
             itemCount: data.length,
             itemBuilder: (context, index) {
               return ProductCard(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context, rootNavigator: true)
+                      .pushNamed(AppRoutes.productDetails);
+                },
                 product: data[index],
                 showBorder: true,
                 showStars: true,

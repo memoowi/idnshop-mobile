@@ -7,16 +7,18 @@ import 'package:idnshop/common/widgets/custom_cached_network_image.dart';
 import 'package:idnshop/common/widgets/custom_order_button.dart';
 
 class OrderTile extends StatelessWidget {
+  final Function()? onTap;
   final Map<dynamic, dynamic> order;
   const OrderTile({
     super.key,
+    this.onTap,
     required this.order,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:idnshop/common/widgets/custom_rating_bar.dart';
 import 'package:idnshop/core/theme/custom_color.dart';
 import 'package:idnshop/common/utils/data_formatter.dart';
-import 'package:idnshop/core/theme/svg_data.dart';
 import 'package:idnshop/common/widgets/custom_cached_network_image.dart';
 import 'package:idnshop/features/main_page/data/product_data.dart';
 
@@ -73,23 +71,7 @@ class ProductCard extends StatelessWidget {
                       ? Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            RatingBarIndicator(
-                              rating: product.rating,
-                              itemBuilder: (context, index) => SvgPicture.asset(
-                                SvgData.starFill,
-                                colorFilter: ColorFilter.mode(
-                                  CustomColor.secondary1,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
-                              unratedColor: CustomColor.border,
-                              itemCount: 5,
-                              itemSize: 14.0,
-                              itemPadding: EdgeInsets.only(
-                                right: 2.0,
-                              ),
-                              direction: Axis.horizontal,
-                            ),
+                            CustomRatingBar(rating: product.rating),
                             const SizedBox(width: 4),
                             Text(
                               '(${product.sold} sold)',

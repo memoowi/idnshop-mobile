@@ -136,4 +136,10 @@ class SvgData {
   static String get idnLight => '$baseIconPath/idn-light.svg';
   static String get idnDark => '$baseIconPath/idn-dark.svg';
   static String get robotHead => '$baseIconPath/robot-head.svg';
+
+  // colorful
+  static String get googleColor => '$baseIconPath/devicon_google.svg';
+  static String get githubColor => '$baseIconPath/devicon_github.svg';
+  static String get linkedinColor => '$baseIconPath/skill-icons_linkedin.svg';
+  static String get instagramColor => '$baseIconPath/skill-icons_instagram.svg';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idnshop/core/routes/app_routes.dart';
 import 'package:idnshop/features/order_list/widgets/order_tile.dart';
 
 class OrderListSection extends StatelessWidget {
@@ -6,7 +7,7 @@ class OrderListSection extends StatelessWidget {
     super.key,
   });
 
-  List<Map<dynamic, dynamic>> get orders => [
+  static List<Map<dynamic, dynamic>> get orders => [
         {
           "id": 'IVR/20240203/XXIV/II/1929971609',
           "status": "Pending",
@@ -15,6 +16,14 @@ class OrderListSection extends StatelessWidget {
             {
               "name": "Shoes",
               "image": "https://i.ibb.co.com/ZBv3QNN/js.png",
+              "qty": 1,
+              "color": "violet",
+              "size": "xl",
+              "price": 200000,
+            },
+            {
+              "name": "Shoes",
+              "image": "https://picsum.photos/200",
               "qty": 1,
               "color": "violet",
               "size": "xl",
@@ -133,6 +142,10 @@ class OrderListSection extends StatelessWidget {
             (index) => Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
               child: OrderTile(
+                onTap: () {
+                  Navigator.of(context, rootNavigator: true)
+                      .pushNamed(AppRoutes.orderDetails);
+                },
                 order: orders[index],
               ),
             ),

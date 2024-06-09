@@ -17,6 +17,11 @@ class AppRoutes {
   static const String cart = '/cart';
   static const String search = '/search';
 
+  static const String productDetails = '/product-details';
+  static const String reviews = '/reviews';
+
+  static const String orderDetails = '/order-details';
+
   static String initialRoute = preload;
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -48,6 +53,13 @@ class AppRoutes {
         return _fadeTransition(CartScreen(), cart);
       case search:
         return _fadeTransition(SearchScreen(), search);
+      case productDetails:
+        return _slideTransition(
+            ProductDetailsScreen(), productDetails, 1.0, 0.0);
+      case reviews:
+        return _fadeTransition(ReviewsScreen(), reviews);
+      case orderDetails:
+        return _slideTransition(OrderDetailsScreen(), orderDetails, 1.0, 0.0);
       default:
         return _fadeTransition(HomeScreen(), home);
     }

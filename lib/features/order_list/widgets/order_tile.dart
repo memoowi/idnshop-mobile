@@ -103,7 +103,10 @@ class OrderTile extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        '${'Variant : ' + order['items'][0]['color'].toUpperCase() + ' - ' + order['items'][0]['size'].toUpperCase()}',
+                        'Variant : ' +
+                            order['items'][0]['color'].toUpperCase() +
+                            ' - ' +
+                            order['items'][0]['size'].toUpperCase(),
                         style: Theme.of(context).textTheme.bodySmall,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -131,19 +134,19 @@ class OrderTile extends StatelessWidget {
                 ),
               ],
             ),
-            Divider(),
+            const Divider(),
             Text(
               'Show more products',
               style: Theme.of(context).textTheme.labelMedium,
             ),
-            Divider(),
+            const Divider(),
             Row(
               children: [
                 Text(
                   '${order['items'].length} products',
                   style: Theme.of(context).textTheme.labelLarge,
                 ),
-                Spacer(),
+                const Spacer(),
                 Text('Order Total : ',
                     style: Theme.of(context).textTheme.bodyMedium),
                 Text(
@@ -170,7 +173,7 @@ class OrderTile extends StatelessWidget {
                           label: 'Cancel',
                           svgData: SvgData.close,
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                   order['status'] == 'Arrived'
                       ? CustomOrderButton(
                           onPressed: () {},
@@ -180,7 +183,7 @@ class OrderTile extends StatelessWidget {
                           svgColor: CustomColor.secondary1,
                           textColor: CustomColor.secondary1,
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                   order['status'] == 'Delivered'
                       ? CustomOrderButton(
                           onPressed: () {},
@@ -188,7 +191,7 @@ class OrderTile extends StatelessWidget {
                           label: 'Track',
                           svgData: SvgData.map,
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                   order['status'] == 'Arrived'
                       ? CustomOrderButton(
                           onPressed: () {},
@@ -196,7 +199,7 @@ class OrderTile extends StatelessWidget {
                           label: 'Confirm & Rate',
                           svgData: SvgData.reviewsOutline,
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                   order['status'] == 'Pending'
                       ? CustomOrderButton(
                           onPressed: () {},
@@ -204,7 +207,7 @@ class OrderTile extends StatelessWidget {
                           label: 'Pay',
                           svgData: SvgData.pay,
                         )
-                      : SizedBox.shrink(),
+                      : const SizedBox.shrink(),
                 ],
               ),
             ),

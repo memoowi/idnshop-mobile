@@ -16,7 +16,7 @@ class OrderListSection extends StatelessWidget {
             {
               "name": "Shoes",
               "image": "https://i.ibb.co.com/ZBv3QNN/js.png",
-              "qty": 1,
+              "qty": 2,
               "color": "violet",
               "size": "xl",
               "price": 200000,
@@ -30,7 +30,7 @@ class OrderListSection extends StatelessWidget {
               "price": 200000,
             },
           ],
-          "total": 200000,
+          "total": 600000,
         },
         {
           "id": 'IVR/20240203/XXIV/II/1929971609',
